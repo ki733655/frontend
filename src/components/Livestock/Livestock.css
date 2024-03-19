@@ -1,0 +1,21 @@
+.live-main{
+    height: 100%;
+    background-color: aquamarine;  
+}
+.live-top{
+    height: 44vh;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.live-bottom{
+    height: 45vh;
+    border: 2px solid black;
+}
+.pig-box{
+    height: 30vh;
+    width: 34vw;
+    border: 2px solid black;
+
+}

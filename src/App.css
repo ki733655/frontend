@@ -1,0 +1,19 @@
+.main {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 5fr; /* Example columns, adjust as needed */
+    overflow: auto; /* Ensure that .main is scrollable */
+}
+
+.sidebar {
+    height: 100vh;
+    border-right: 1px solid rgb(11, 11, 11);
+    position: sticky;
+    top: 0;
+}
+
+.mainbar {
+    height: 100%;
+   
+    
+}

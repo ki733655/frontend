@@ -1,0 +1,64 @@
+{
+  "hash": "09143622",
+  "configHash": "bfa7ab60",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "67cd9122",
+  "optimized": {
+    "@mui/icons-material/AttachMoney": {
+      "src": "../../node_modules/@mui/icons-material/AttachMoney.js",
+      "file": "@mui_icons-material_AttachMoney.js",
+      "fileHash": "f2b36703",
+      "needsInterop": true
+    },
+    "@mui/icons-material/Inventory": {
+      "src": "../../node_modules/@mui/icons-material/Inventory.js",
+      "file": "@mui_icons-material_Inventory.js",
+      "fileHash": "b60df86a",
+      "needsInterop": true
+    },
+    "@mui/icons-material/SpaceDashboard": {
+      "src": "../../node_modules/@mui/icons-material/SpaceDashboard.js",
+      "file": "@mui_icons-material_SpaceDashboard.js",
+      "fileHash": "e48987e1",
+      "needsInterop": true
+    },
+    "axios": {
+      "src": "../../node_modules/axios/index.js",
+      "file": "axios.js",
+      "fileHash": "d4c3352c",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "602dd44d",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "cbc17f27",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "80a4d136",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-DMZJE6BO": {
+      "file": "chunk-DMZJE6BO.js"
+    },
+    "chunk-FBRNPY62": {
+      "file": "chunk-FBRNPY62.js"
+    },
+    "chunk-UM3JHGVO": {
+      "file": "chunk-UM3JHGVO.js"
+    },
+    "chunk-CEQRFMJQ": {
+      "file": "chunk-CEQRFMJQ.js"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.nav-container{
+    height: 10vh;
+    width: 100%;
+    border-bottom: 1px solid rgb(167, 157, 157);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.nav-user li{
+    display: flex;
+    align-items: center;
+
+}
+.nav-user li h6{
+    margin-top: 7px;
+    padding-left: 10px;
+}
