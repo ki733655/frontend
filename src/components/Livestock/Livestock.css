@@ -1,21 +1,74 @@
 .live-main{
     height: 100%;
-    background-color: aquamarine;  
+    /* background-color: aquamarine;   */
 }
 .live-top{
     height: 44vh;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 .live-bottom{
     height: 45vh;
-    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
 }
 .pig-box{
-    height: 30vh;
-    width: 34vw;
-    border: 2px solid black;
+    height: 31vh;
+    width: 31vw;
+    border: 1px solid rgb(164, 152, 152);
+    border-radius: 20px;
+    background-color: #FFEFE3;
 
+}
+.logos{
+    display: flex;
+    /* border: 1px solid black; */
+    justify-content: space-between;
+}
+.pig-logo{
+    position: relative;
+    bottom: 6vh;
+    right: 3vw;
+}
+.arrow{
+    padding-right: 5px;
+    padding-top: 3px;
+}
+
+.live-number{
+   display: flex;;
+   align-items: center;
+   justify-content: center;
+    border: 1px soild black;
+     height: 46px;
+     width: 90px;
+     background-color: #F5EC99;
+     border-radius: 20px;
+     font-weight: bold;
+     font-size: 1.3rem;
+     
+}
+
+.content{
+    height: 133px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    bottom: 14vh;
+}
+
+.content button{
+    height: 38px;
+    width: 110px;
+    border-radius: 23px;
+    border: none;
+    background-color: #7A5CFA;
+    color: white;
+    margin-top: 3vh;
+    margin-left: 21vw;
 }
