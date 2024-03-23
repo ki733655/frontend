@@ -1,13 +1,15 @@
 // import React from 'react'
+import { useState } from "react";
 import "./Nav.css";
 import { FaUser } from "react-icons/fa";
 
-const Nav = () => {
+const Nav = (props) => {
+  
   return (
     <>
       <div className="nav-container">
         <div className="nav-text">
-          <h3>Livestock</h3>
+          <h3>{props.value}</h3>
         </div>
         <div className="nav-user">
           <li>

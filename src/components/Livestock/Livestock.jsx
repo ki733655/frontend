@@ -2,6 +2,7 @@ import React from 'react';
 import './Livestock.css';
 import arrow from '../../assets/arrow.png';
 import Pig from '../../assets/Pig.png';
+import { Link } from 'react-router-dom';
 
 const Livestock = () => {
   return (
@@ -19,7 +20,7 @@ const Livestock = () => {
           <div className="content">
             <h3>Total Boar</h3>
             <div className="live-number">12</div>
-            <button>Add Boar</button>
+           <Link to="/livestock/addboar"><button>Add Boar</button></Link> 
           </div>
         </div>
         <div className="pig-box">
@@ -34,7 +35,8 @@ const Livestock = () => {
           <div className="content">
             <h3>Total Sow</h3>
             <div className="live-number">12</div>
-            <button>Add Sow</button>
+            <Link to="/livestock/addsow"><button>Add Sow</button></Link> 
+
           </div>
         </div>
       </div>
@@ -51,7 +53,8 @@ const Livestock = () => {
           <div className="content">
             <h3>Total Piglets</h3>
             <div className="live-number">12</div>
-            <button>Add Piglets</button>
+           <Link to="/livestock/addpiglets"><button>Add Piglets</button></Link> 
+            
           </div>
         </div>
         <div className="pig-box">
@@ -66,7 +69,8 @@ const Livestock = () => {
           <div className="content">
             <h3>Total Khassi</h3>
             <div className="live-number">12</div>
-            <button>Add Khassi</button>
+           <Link to="/livestock/addkhassi"><button>Add Khassi</button></Link> 
+            
           </div>
         </div>
       </div>
