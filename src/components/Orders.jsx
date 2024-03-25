@@ -20,6 +20,9 @@ const Orders = () => {
                 <th scope="col">Delivery date</th>
                 <th scope="col">Delivery Status</th>
                 <th scope="col">man</th>
+                <th scope="col">woman</th>
+
+
               </tr>
             </thead>
             <tbody>
