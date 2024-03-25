@@ -10,35 +10,35 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar-main">
       <ul>
-        <li style={{ paddingBottom: "30px" }}>
+        <li key="companyName" style={{ paddingBottom: "30px" }}>
           <h5>CompanyName</h5>
         </li>
-        <Link to="/" onClick={() => {props.name}}>
+        <Link key="dashboardLink" to="/" onClick={() => setName("Dashboard")}>
           <li>
             <SpaceDashboardIcon />
             <h5>Dashboard</h5>
           </li>
         </Link>
-        <Link to="/livestock" onClick={() => setName("Livestock")}>
+        <Link key="livestockLink" to="/livestock" onClick={() => setName("Livestock")}>
           <li>
             <InventoryIcon />
             <h5>Livestock</h5>
           </li>
         </Link>
 
-        <Link to="/orders" onClick={() => setName("Orders")}>
+        <Link key="ordersLink" to="/orders" onClick={() => setName("Orders")}>
           <li>
             <SpaceDashboardIcon />
             <h5>Orders</h5>
           </li>
         </Link>
-        <Link to="/sales" onClick={() => setName("Sales")}>
+        <Link key="salesLink" to="/sales" onClick={() => setName("Sales")}>
           <li>
             <AttachMoneyIcon />
             <h5>Sales</h5>
           </li>
         </Link>
-        <Link to="/employee" onClick={() => setName("Employee")}>
+        <Link key="employeeLink" to="/employee" onClick={() => setName("Employee")}>
           <li>
             <SpaceDashboardIcon />
             <h5>Employee</h5>
