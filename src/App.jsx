@@ -7,10 +7,10 @@ import Sales from "./components/Sales";
 import Employee from "./components/Employee";
 import Orders from "./components/Orders";
 import Nav from "./components/Nav/Nav";
-import Boar from "./components/Livestock/pigForms/Boar";
-import Sow from "./components/Livestock/pigForms/Sow";
-import Piglets from "./components/Livestock/pigForms/Piglets";
-import Khassi from "./components/Livestock/pigForms/Khassi";
+import Boar from "./components/Livestock/pigForms/Boar/Boar";
+import Sow from "./components/Livestock/pigForms/Sow/Sow";
+import Piglets from "./components/Livestock/pigForms/Piglets/Piglets";
+import Khassi from "./components/Livestock/pigForms/Khassi/Khassi";
 import { useState } from "react";
 
 function App() {

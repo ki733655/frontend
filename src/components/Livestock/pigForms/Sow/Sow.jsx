@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import "./Boar.css"
-import axios from 'axios'; // Import Axios for making HTTP requests
-
-const Boar = () => {
+import axios from "axios";
+import "./Sow.css";
+import { useState } from "react";
+const Sow = () => {
   const [formData, setFormData] = useState({
     id: '',
     roomNumber: '',
@@ -19,16 +18,17 @@ const Boar = () => {
       [id]: value
     }));
   };
-
+ 
+  // form submission logic
   const handleSubmit = async (e) => {
     e.preventDefault();
     
     try {
       // Make an HTTP POST request to your backend endpoint
-      // const response = await axios.post('/submit-form', formData);
+      const response = await axios.post('http://localhost:3000/submit-form-sow', formData);
       
       // Handle the response if needed
-      // console.log(response.data);
+      console.log(response.data);
       
       // Reset the form data after successful submission
       setFormData({
@@ -46,21 +46,19 @@ const Boar = () => {
       console.error('Error occurred:', error);
     }
   };
-
   return (
     <>
-    <div className="boar-form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="sow-form">
         <div className="mb-3">
-          <label className="form-label">Boar Id</label>
+          <label className="form-label">Sow Id</label>
           <input
             type="text"
             className="form-control"
             id="id"
-            placeholder="Enter boar id"
+            placeholder="Enter sow id"
             value={formData.id}
             onChange={handleChange}
-          />
+          ></input>
 
           <label className="form-label">Room number</label>
           <input
@@ -70,10 +68,9 @@ const Boar = () => {
             placeholder="Enter room number"
             value={formData.roomNumber}
             onChange={handleChange}
-          />
-          
+          ></input>
           <label className="form-label">Select the date of CSF</label>
-          <input 
+          <input
             type="date"
             className="form-control"
             id="csfDate"
@@ -81,15 +78,15 @@ const Boar = () => {
             onChange={handleChange}
           />
           <label className="form-label">Select the date of FMD</label>
-          <input 
+          <input
             type="date"
             className="form-control"
             id="fmdDate"
             value={formData.fmdDate}
             onChange={handleChange}
           />
-          <label className="form-label">Select the date of Deworm</label>
-          <input 
+          <label className="form-label">Select the date of Deworn</label>
+          <input
             type="date"
             className="form-control"
             id="dewormDate"
@@ -97,7 +94,7 @@ const Boar = () => {
             onChange={handleChange}
           />
           <label className="form-label">Weight</label>
-          <input 
+          <input
             type="number"
             className="form-control"
             id="weight"
@@ -105,13 +102,11 @@ const Boar = () => {
             value={formData.weight}
             onChange={handleChange}
           />
-
           <input type="submit" className="btn btn-primary" value="Submit" />
         </div>
       </form>
-      </div>
     </>
   );
 };
 
-export default Boar;
+export default Sow;
