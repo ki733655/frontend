@@ -32,7 +32,7 @@ const Orders = () => {
                 <td>Dibrugarh</td>
                 <td>12,000</td>
                 <td>91027366749</td>
-                <td>bhal bhal gahori</td>
+                <td>good stock</td>
                 <td>18/12/24</td>
                 <td>Deliverd</td>
               </tr>
@@ -46,7 +46,7 @@ const Orders = () => {
                 <td>Dibrugarh</td>
                 <td>12,000</td>
                 <td>91027366749</td>
-                <td>bhal bhal gahori</td>
+                <td>good stock</td>
                 <td>18/12/24</td>
                 <td>Deliverd</td>
               </tr>
