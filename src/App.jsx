@@ -12,6 +12,8 @@ import Sow from "./components/Livestock/pigForms/Sow/Sow";
 import Piglets from "./components/Livestock/pigForms/Piglets/Piglets";
 import Khassi from "./components/Livestock/pigForms/Khassi/Khassi";
 import { useState } from "react";
+import Livestockdemo from "./components/Livestock/Livestockdemo";
+import BoarDetail from "./components/Livestock/pigdetail/Boar/BoarDetail";
 
 function App() {
   const [name, setName] = useState("Dashboard")
@@ -27,10 +29,14 @@ function App() {
             <Routes>
               <Route path="/" element={<Dashboard  />} />
               <Route path="/livestock" element={<Livestock />} />
+              {/* Below is the button route */}
               <Route path="/livestock/addboar" element={<Boar />} />
               <Route path="/livestock/addsow" element={<Sow />} />
               <Route path="/livestock/addpiglets" element={<Piglets />} />
               <Route path="/livestock/addkhassi" element={<Khassi />} />
+              {/* Below is the route of display pig details */}
+              <Route path="/livestock/totalboar" element={<BoarDetail />} />
+
 
               <Route path="/sales" element={<Sales />} />
               <Route path="/orders" element={<Orders />} />
