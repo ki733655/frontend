@@ -5,7 +5,7 @@ import Pig from '../../assets/Pig.png';
 import { Link } from 'react-router-dom';
 import axios from "axios"
 
-const Livestock = () => {
+const Livestockdemo = () => {
   const [boarCount, setBoarCount] = useState(null);
   const [sowCount, setSowCount] = useState(null);
   const [pigletsCount, setPigletsCount] = useState(null);
@@ -108,4 +108,4 @@ const Livestock = () => {
   );
 };
 
-export default Livestock;
+export default Livestockdemo;
