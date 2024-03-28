@@ -68,7 +68,7 @@ const Livestock = () => {
           <div className="content">
             <h3 style={{fontSize: "2vw"}}>Total Sow</h3>
             <div className="live-number">{sowCount}</div>
-           <Link to="/livestock/addboar"><button>Add Sow</button></Link> 
+           <Link to="/livestock/addsow"><button>Add Sow</button></Link> 
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@ const Livestock = () => {
           <div className="content">
             <h3 style={{fontSize: "2vw"}}>Total Piglets</h3>
             <div className="live-number">{pigletsCount}</div>
-           <Link to="/livestock/addboar"><button>Add Piglets</button></Link> 
+           <Link to="/livestock/addpiglets"><button>Add Piglets</button></Link> 
           </div>
         </div>
         <div className="pig-box">
@@ -100,7 +100,7 @@ const Livestock = () => {
           <div className="content">
             <h3 style={{fontSize: "2vw"}}>Total Khassi</h3>
             <div className="live-number">{khassiCount}</div>
-           <Link to="/livestock/addboar"><button>Add Khassi</button></Link> 
+           <Link to="/livestock/addkhassi"><button>Add Khassi</button></Link> 
           </div>
         </div>
       </div>
