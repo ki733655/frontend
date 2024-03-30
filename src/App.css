@@ -7,8 +7,10 @@
 
 .sidebar {
     height: 100vh;
-    background-color:  #FCFCFC;
-    border-right: 1px solid rgb(126, 120, 120);
+    /* background-color:  #FCFCFC; */
+    /* background-color: rgb(216, 216, 231); */
+    /* border-right: 1px solid rgb(126, 120, 120); */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 0;
 }
