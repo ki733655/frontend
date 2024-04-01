@@ -12,8 +12,10 @@ import Sow from "./components/Livestock/pigForms/Sow/Sow";
 import Piglets from "./components/Livestock/pigForms/Piglets/Piglets";
 import Khassi from "./components/Livestock/pigForms/Khassi/Khassi";
 import { useState } from "react";
-import Livestockdemo from "./components/Livestock/Livestockdemo";
 import BoarDetail from "./components/Livestock/pigdetail/Boar/BoarDetail";
+import SowDetail from "./components/Livestock/pigdetail/Sow/SowDetail";
+import PigletDetail from "./components/Livestock/pigdetail/Piglet/PigletDetail";
+import KhassiDetail from "./components/Livestock/pigdetail/Khassi/KhassiDetail";
 
 function App() {
   const [name, setName] = useState("Dashboard")
@@ -36,6 +38,12 @@ function App() {
               <Route path="/livestock/addkhassi" element={<Khassi />} />
               {/* Below is the route of display pig details */}
               <Route path="/livestock/totalboar" element={<BoarDetail />} />
+              <Route path="/livestock/totalsow" element={<SowDetail />} />
+              <Route path="/livestock/totalpiglet" element={<PigletDetail />} />
+              <Route path="/livestock/totalkhassi" element={<KhassiDetail />} />
+
+
+
 
 
               <Route path="/sales" element={<Sales />} />

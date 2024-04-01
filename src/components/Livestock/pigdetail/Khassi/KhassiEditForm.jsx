@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./BoarEditForm.css";
+import "./KhassiEditForm.css";
 import { MdCancel } from "react-icons/md";
 import axios from "axios"; // Import Axios for making HTTP requests
 
-const BoarEditForm = ({ editItem, setEditItem }) => {
+const KhassiEditForm = ({ editItem, setEditItem }) => {
     if (!editItem) return null;
   
     const initialFormData = {
@@ -30,7 +30,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
   
     try {
       // Assuming your server endpoint is expecting the edited data as JSON in the request body
-      await axios.put("http://localhost:3000/boar-edit", formData);
+      await axios.put("http://localhost:3000/khassi-edit", formData);
       alert("Data updated successfully");
       // Clear the form data after successful submission
       setFormData({
@@ -56,20 +56,20 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
 
   return (
     <>
-      <div className="boar-form">
-        <div className="boar-form-container">
+      <div className="khassi-form">
+        <div className="khassi-form-container">
           <div className="pig-header">
             <h4 style={{ textAlign: "center" }}>Edit pig details</h4>
             <MdCancel style={{fontSize: "4vh"}} onClick={() => setEditItem(null)} />
           </div>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label className="form-label">Boar Id</label>
+              <label className="form-label">Khassi Id</label>
               <input
                 type="text"
                 className="form-control"
                 id="id"
-                placeholder="Enter boar id"
+                placeholder="Enter khassi id"
                 value={formData.id}
                 onChange={handleChange}
               />
@@ -118,7 +118,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
                 onChange={handleChange}
               />
 
-              <input type="submit" className="btn btn-primary" id="boar-edit-submit" value="Save" />
+              <input type="submit" className="btn btn-primary" id="khassi-edit-submit" value="Save" />
             </div>
           </form>
         </div>
@@ -127,4 +127,4 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
   );
 };
 
-export default BoarEditForm;
+export default KhassiEditForm;

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import './Livestock.css';
-import arrow from '../../assets/arrow.png';
-import Pig from '../../assets/Pig.png';
-import { Link } from 'react-router-dom';
-import axios from "axios"
+import { useEffect, useState } from "react";
+import "./Livestock.css";
+import arrow from "../../assets/arrow.png";
+import Pig from "../../assets/Pig.png";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Livestock = () => {
   const [boarCount, setBoarCount] = useState(null);
@@ -14,10 +14,16 @@ const Livestock = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const boar_response = await axios.get("http://localhost:3000/boar-count");
+        const boar_response = await axios.get(
+          "http://localhost:3000/boar-count"
+        );
         const sow_response = await axios.get("http://localhost:3000/sow-count");
-        const piglets_response = await axios.get("http://localhost:3000/piglets-count");
-        const khassi_response = await axios.get("http://localhost:3000/khassi-count");
+        const piglets_response = await axios.get(
+          "http://localhost:3000/piglet-count"
+        );
+        const khassi_response = await axios.get(
+          "http://localhost:3000/khassi-count"
+        );
 
         // updating the values of the pig counts
         setBoarCount(boar_response.data.count);
@@ -27,7 +33,7 @@ const Livestock = () => {
 
         console.log(boar_response.data.count);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -41,66 +47,90 @@ const Livestock = () => {
         <div className="pig-box">
           <div className="logos">
             <div className="pig-logo">
-              <img src={Pig} alt="" style={{height: "22vh"}} />
+              <img src={Pig} alt="" style={{ height: "22vh" }} />
             </div>
             <div className="arrow">
-              <img src={arrow} alt="" style={{height: "7vh"}} />
+              <img src={arrow} alt="" style={{ height: "7vh" }} />
             </div>
           </div>
           <div className="content">
-            <Link to= "/livestock/totalboar">
-            <h3 style={{fontSize: "2vw"}}>Total Boar</h3></Link>
-            <Link to= "/livestock/totalboar">
-            <div className="live-number">{boarCount}</div>
+            <Link to="/livestock/totalboar">
+              <h3 style={{ fontSize: "2vw" }}>Total Boar</h3>
             </Link>
-           <Link to="/livestock/addboar"><button>Add Boar</button></Link> 
+            <Link to="/livestock/totalboar">
+              <div className="live-number">{boarCount}</div>
+            </Link>
+            <Link to="/livestock/addboar">
+              <button>Add Boar</button>
+            </Link>
           </div>
         </div>
         <div className="pig-box">
           <div className="logos">
             <div className="pig-logo">
-              <img src={Pig} alt="" style={{height: "22vh"}} />
+              <img src={Pig} alt="" style={{ height: "22vh" }} />
             </div>
             <div className="arrow">
-              <img src={arrow} alt="" style={{height: "7vh"}} />
+              <img src={arrow} alt="" style={{ height: "7vh" }} />
             </div>
           </div>
           <div className="content">
-            <h3 style={{fontSize: "2vw"}}>Total Sow</h3>
-            <div className="live-number">{sowCount}</div>
-           <Link to="/livestock/addsow"><button>Add Sow</button></Link> 
+            <Link to="/livestock/totalsow">
+              <h3 style={{ fontSize: "2vw" }}>Total Sow</h3>
+            </Link>
+            <Link to="/livestock/totalsow">
+              <div className="live-number">{sowCount}</div>
+            </Link>
+
+            <Link to="/livestock/addsow">
+              <button>Add Sow</button>
+            </Link>
           </div>
         </div>
       </div>
       <div className="live-bottom">
-      <div className="pig-box">
+        <div className="pig-box">
           <div className="logos">
             <div className="pig-logo">
-              <img src={Pig} alt="" style={{height: "22vh"}} />
+              <img src={Pig} alt="" style={{ height: "22vh" }} />
             </div>
             <div className="arrow">
-              <img src={arrow} alt="" style={{height: "7vh"}} />
+              <img src={arrow} alt="" style={{ height: "7vh" }} />
             </div>
           </div>
           <div className="content">
-            <h3 style={{fontSize: "2vw"}}>Total Piglets</h3>
-            <div className="live-number">{pigletsCount}</div>
-           <Link to="/livestock/addpiglets"><button>Add Piglets</button></Link> 
+            <Link to="/livestock/totalpiglet">
+              <h3 style={{ fontSize: "2vw" }}>Total Piglets</h3>
+            </Link>
+            <Link to="/livestock/totalpiglet">
+              <div className="live-number">{pigletsCount}</div>
+            </Link>
+
+            <Link to="/livestock/addpiglets">
+              <button>Add Piglets</button>
+            </Link>
           </div>
         </div>
         <div className="pig-box">
           <div className="logos">
             <div className="pig-logo">
-              <img src={Pig} alt="" style={{height: "22vh"}} />
+              <img src={Pig} alt="" style={{ height: "22vh" }} />
             </div>
             <div className="arrow">
-              <img src={arrow} alt="" style={{height: "7vh"}} />
+              <img src={arrow} alt="" style={{ height: "7vh" }} />
             </div>
           </div>
           <div className="content">
-            <h3 style={{fontSize: "2vw"}}>Total Khassi</h3>
-            <div className="live-number">{khassiCount}</div>
-           <Link to="/livestock/addkhassi"><button>Add Khassi</button></Link> 
+            <Link to="/livestock/totalkhassi">
+              <h3 style={{ fontSize: "2vw" }}>Total Khassi</h3>
+            </Link>
+            <Link to="/livestock/totalkhassi">
+              <div className="live-number">{khassiCount}</div>
+            </Link>
+
+            <Link to="/livestock/addkhassi">
+              <button>Add Khassi</button>
+            </Link>
           </div>
         </div>
       </div>

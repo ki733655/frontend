@@ -7,6 +7,9 @@
 
 .sidebar {
     height: 100vh;
+    /* border-radius: 30px; */
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
     /* background-color:  #FCFCFC; */
     /* background-color: rgb(216, 216, 231); */
     /* border-right: 1px solid rgb(126, 120, 120); */

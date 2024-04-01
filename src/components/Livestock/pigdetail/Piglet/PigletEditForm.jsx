@@ -1,18 +1,21 @@
 import { useState } from "react";
-import "./BoarEditForm.css";
+import "./PigletEditForm.css";
 import { MdCancel } from "react-icons/md";
 import axios from "axios"; // Import Axios for making HTTP requests
 
-const BoarEditForm = ({ editItem, setEditItem }) => {
+const PigletEditForm = ({ editItem, setEditItem }) => {
     if (!editItem) return null;
   
     const initialFormData = {
       id: editItem.id || "",
+      motherId: editItem.motherId || "",
+      fatherId: editItem.fatherId || "",
+      dob: editItem.dob || "",
+      gender: editItem.gender || "",
       roomNumber: editItem.roomNumber || "",
-      CSF: editItem.CSF || "",
-      FMD: editItem.FMD || "",
-      Deworm: editItem.Deworm || "",
-      Weight: editItem.Weight || "",
+      swineFever: editItem.swineFever || "",
+      deworming: editItem.deworming || "",
+      weight: editItem.weight || "",
     };
   
     const [formData, setFormData] = useState(initialFormData);
@@ -30,7 +33,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
   
     try {
       // Assuming your server endpoint is expecting the edited data as JSON in the request body
-      await axios.put("http://localhost:3000/boar-edit", formData);
+      await axios.put("http://localhost:3000/piglet-edit", formData);
       alert("Data updated successfully");
       // Clear the form data after successful submission
       setFormData({
@@ -56,24 +59,59 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
 
   return (
     <>
-      <div className="boar-form">
-        <div className="boar-form-container">
+      <div className="piglet-form">
+        <div className="piglet-form-container">
           <div className="pig-header">
             <h4 style={{ textAlign: "center" }}>Edit pig details</h4>
             <MdCancel style={{fontSize: "4vh"}} onClick={() => setEditItem(null)} />
           </div>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label className="form-label">Boar Id</label>
+              <label className="form-label">Piglet Id</label>
               <input
                 type="text"
                 className="form-control"
                 id="id"
-                placeholder="Enter boar id"
+                placeholder="Enter piglet id"
                 value={formData.id}
                 onChange={handleChange}
               />
-
+              <label className="form-label">Mother Id</label>
+              <input
+                type="text"
+                className="form-control"
+                id="motherId"
+                placeholder="Enter mother id"
+                value={formData.motherId}
+                onChange={handleChange}
+              />
+              <label className="form-label">Father Id</label>
+              <input
+                type="text"
+                className="form-control"
+                id="fatherId"
+                placeholder="Enter father id"
+                value={formData.fatherId}
+                onChange={handleChange}
+              />
+              <label className="form-label">Date of birth</label>
+              <input
+                type="text"
+                className="form-control"
+                id="motherId"
+                placeholder="Enter date of birth"
+                value={formData.dob}
+                onChange={handleChange}
+              />
+              <label className="form-label">Gender</label>
+              <input
+                type="text"
+                className="form-control"
+                id="gender"
+                value={formData.gender}
+                onChange={handleChange}
+              />
+      
               <label className="form-label">Room number</label>
               <input
                 type="number"
@@ -84,41 +122,33 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
                 onChange={handleChange}
               />
 
-              <label className="form-label">Select the date of CSF</label>
+              <label className="form-label">Select the date of Swine fever</label>
               <input
                 type="date"
                 className="form-control"
-                id="CSF"
-                value={formData.CSF}
+                id="swineFever"
+                value={formData.swineFever}
                 onChange={handleChange}
               />
-              <label className="form-label">Select the date of FMD</label>
+              <label className="form-label">Select the date of deworming</label>
               <input
                 type="date"
                 className="form-control"
-                id="FMD"
-                value={formData.FMD}
-                onChange={handleChange}
-              />
-              <label className="form-label">Select the date of Deworm</label>
-              <input
-                type="date"
-                className="form-control"
-                id="Deworm"
-                value={formData.Deworm}
+                id="deworming"
+                value={formData.deworming}
                 onChange={handleChange}
               />
               <label className="form-label">Weight</label>
               <input
                 type="number"
                 className="form-control"
-                id="Weight"
+                id="weight"
                 placeholder="in kgs"
-                value={formData.Weight}
+                value={formData.weight}
                 onChange={handleChange}
               />
 
-              <input type="submit" className="btn btn-primary" id="boar-edit-submit" value="Save" />
+              <input type="submit" className="btn btn-primary" id="piglet-edit-submit" value="Save" />
             </div>
           </form>
         </div>
@@ -127,4 +157,4 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
   );
 };
 
-export default BoarEditForm;
+export default PigletEditForm;
