@@ -1,0 +1,42 @@
+.khassi-form{
+    padding: 50px;
+    padding-top: 5vh;
+    /* border: 1px solid black; */
+    height: 80vh;
+    width: 40vw;
+    position: sticky;
+    /* top: -200px; */
+    bottom: 8vh;
+    left: 35vw;
+    z-index: 1;
+    background-color: aliceblue;
+    overflow: auto;
+    border-radius: 10px; /* Rounded corners for a nicer look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+    
+}
+.mb-3 input{
+    margin-bottom: 6px;
+    font-size: 2vh;
+}
+
+.form-label{
+    font-size: 2vh;
+}
+
+/* .cancelLogo{
+    display: inline;
+    margin-left: 100%;
+} */
+
+.pig-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2vh;
+}
+
+#khassi-edit-submit{
+    margin-top: 4vh;
+    width: 100%;
+}

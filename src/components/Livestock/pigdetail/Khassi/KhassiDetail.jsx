@@ -1,18 +1,18 @@
 import axios from "axios";
-import "./BoarDetail.css";
+import "./KhassiDetail.css";
 import  { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { MdDelete, } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import BoarEditForm from "./BoarEditForm";
+import KhassiEditForm from "./KhassiEditForm";
 // search field imports
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const BoarDetail = () => {
-  const [boarData, setBoarData] = useState([]);
+const KhassiDetail = () => {
+  const [khassiData, setKhassiData] = useState([]);
   const [editItem, setEditItem] = useState(null); // State to hold the item being edited
   // const [editConfirm, setEditConfirm] = useState(false)
   const [searchQuery, setSearchQuery] = useState("");
@@ -21,8 +21,8 @@ const BoarDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/boar-details");
-        setBoarData(response.data);
+        const response = await axios.get("http://localhost:3000/khassi-details");
+        setKhassiData(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -36,18 +36,18 @@ const BoarDetail = () => {
     try {
       // Sending the deletion request
       const response = await axios.delete(
-        `http://localhost:3000/boar-delete/${id}`
+        `http://localhost:3000/khassi-delete/${id}`
       );
       console.log("Deletion response:", response.data);
 
       // Fetching the updated data after deletion
       const responseAfterDelete = await axios.get(
-        "http://localhost:3000/boar-details"
+        "http://localhost:3000/khassi-details"
       );
       console.log("Updated data after deletion:", responseAfterDelete.data);
 
       // Extracting the data from the response and setting it to the boarData state
-      setBoarData(
+      setKhassiData(
         Array.isArray(responseAfterDelete.data) ? responseAfterDelete.data : []
       );
     } catch (error) {
@@ -70,14 +70,14 @@ const handleSearch = async (e) => {
   try {
     if (searchQuery.trim() === "") {
       // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/boar-details");
-      setBoarData(response.data);
+      const response = await axios.get("http://localhost:3000/khassi-details");
+      setKhassiData(response.data);
     } else {
       // If search query is not empty, perform search
       const response = await axios.get(
-        `http://localhost:3000/boar-search?search=${searchQuery}`
+        `http://localhost:3000/khassi-search?search=${searchQuery}`
       );
-      setBoarData(response.data);
+      setKhassiData(response.data);
     }
   } catch (error) {
     console.log("Error searching data", error);
@@ -91,14 +91,14 @@ const handleChange = async (e) => {
   try {
     if (data.trim() === "") {
       // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/boar-details");
-      setBoarData(response.data);
+      const response = await axios.get("http://localhost:3000/khassi-details");
+      setKhassiData(response.data);
     } else {
       // If search query is not empty, perform search
       const response = await axios.get(
-        `http://localhost:3000/boar-search?search=${data}`
+        `http://localhost:3000/khassi-search?search=${data}`
       );
-      setBoarData(response.data);
+      setKhassiData(response.data);
     }
   } catch (error) {
     console.log("Error searching data", error);
@@ -110,12 +110,12 @@ const handleChange = async (e) => {
 
   // }
   return (
-    <div className="boar-detail-main">
-      <div className="boar-detail-2nd">
-        <Form inline className="boar-detail-search">
-          <h4 style={{ fontWeight: "600" }}>All boars detail</h4>
+    <div className="khassi-detail-main">
+      <div className="khassi-detail-2nd">
+        <Form inline className="khassi-detail-search">
+          <h4 style={{ fontWeight: "600" }}>All khassi details</h4>
           <Row>
-            <Col xs="auto" className="boar-detail-column">
+            <Col xs="auto" className="khassi-detail-column">
               <Form.Control
                 type="text"
                 placeholder="Search"
@@ -132,7 +132,7 @@ const handleChange = async (e) => {
             </Col>
           </Row>
         </Form>
-        <Table className="boar-detail-table" responsive bordered hover>
+        <Table className="khassi-detail-table" responsive bordered hover>
           <thead>
             <tr>
               <th>Id</th>
@@ -145,16 +145,16 @@ const handleChange = async (e) => {
             </tr>
           </thead>
 
-          {boarData.map((value, index) => {
-           const CSF = value.CSF
-           ? new Date(value.CSF).toLocaleDateString("en-GB")
-           : "Null";
-         const FMD = value.FMD
-           ? new Date(value.FMD).toLocaleDateString("en-GB")
-           : "Null";
-         const Deworm = value.Deworm
-           ? new Date(value.Deworm).toLocaleDateString("en-GB")
-           : "Null";         
+          {khassiData.map((value, index) => {
+            const CSF = value.CSF
+              ? new Date(value.CSF).toLocaleDateString("en-GB")
+              : "Null";
+            const FMD = value.FMD
+              ? new Date(value.FMD).toLocaleDateString("en-GB")
+              : "Null";
+            const Deworm = value.Deworm
+              ? new Date(value.Deworm).toLocaleDateString("en-GB")
+              : "Null";
 
             return (
               <tbody key={index}>
@@ -165,7 +165,7 @@ const handleChange = async (e) => {
                   <td>{FMD}</td>
                   <td>{Deworm}</td>
                   <td>{value.Weight ? value.Weight : "Null"}</td>
-                  <td className="boar-detail-logo">
+                  <td className="khassi-detail-logo">
                     <div className="delete-logo">
                       <MdDelete
                         id="delete"
@@ -187,11 +187,11 @@ const handleChange = async (e) => {
         </Table>
         {/* Render the edit form if editItem is not null */}
         {editItem && (
-          <BoarEditForm editItem={editItem} setEditItem={setEditItem} />
+          <KhassiEditForm editItem={editItem} setEditItem={setEditItem} />
         )}
       </div>
     </div>
   );
 };
 
-export default BoarDetail;
+export default KhassiDetail;

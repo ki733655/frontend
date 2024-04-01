@@ -1,10 +1,10 @@
-.boar-detail-main{
+.sow-detail-main{
     border: 1px soild black;
     padding: 2%;
     background-color: aliceblue;
 }
 
-.boar-detail-2nd{
+.sow-detail-2nd{
     background-color: white;
     padding: 2%;
     padding-top: 4px;
@@ -12,12 +12,11 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
 }
 
-.boar-detail-table thead tr th{
+.sow-detail-table thead tr th{
     background-color: rgb(187, 221, 250);
 }
 
-
-.boar-detail-search{
+.sow-detail-search{
     /* border: 1px solid black; */
     height: 10vh;
     width: 100%;
@@ -27,13 +26,13 @@
 }
 
 /* search input */
-.boar-detail-column input{
+.sow-detail-column input{
     width: 30vw;
     margin-left: 0vw;
     background-color: rgb(230, 237, 237);
 }
 
-.boar-detail-logo{
+.sow-detail-logo{
     display: flex;
 }
 

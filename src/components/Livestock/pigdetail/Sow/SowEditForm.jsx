@@ -1,9 +1,9 @@
 import { useState } from "react";
-import "./BoarEditForm.css";
+import "./SowEditForm.css";
 import { MdCancel } from "react-icons/md";
 import axios from "axios"; // Import Axios for making HTTP requests
 
-const BoarEditForm = ({ editItem, setEditItem }) => {
+const SowEditForm = ({ editItem, setEditItem }) => {
     if (!editItem) return null;
   
     const initialFormData = {
@@ -11,7 +11,6 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
       roomNumber: editItem.roomNumber || "",
       CSF: editItem.CSF || "",
       FMD: editItem.FMD || "",
-      Deworm: editItem.Deworm || "",
       Weight: editItem.Weight || "",
     };
   
@@ -30,7 +29,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
   
     try {
       // Assuming your server endpoint is expecting the edited data as JSON in the request body
-      await axios.put("http://localhost:3000/boar-edit", formData);
+      await axios.put("http://localhost:3000/sow-edit", formData);
       alert("Data updated successfully");
       // Clear the form data after successful submission
       setFormData({
@@ -56,8 +55,8 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
 
   return (
     <>
-      <div className="boar-form">
-        <div className="boar-form-container">
+      <div className="sow-form">
+        <div className="sow-form-container">
           <div className="pig-header">
             <h4 style={{ textAlign: "center" }}>Edit pig details</h4>
             <MdCancel style={{fontSize: "4vh"}} onClick={() => setEditItem(null)} />
@@ -118,7 +117,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
                 onChange={handleChange}
               />
 
-              <input type="submit" className="btn btn-primary" id="boar-edit-submit" value="Save" />
+              <input type="submit" className="btn btn-primary" id="sow-edit-submit" value="Save" />
             </div>
           </form>
         </div>
@@ -127,4 +126,4 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
   );
 };
 
-export default BoarEditForm;
+export default SowEditForm;
