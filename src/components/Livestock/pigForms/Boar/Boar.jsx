@@ -49,11 +49,15 @@ const Boar = () => {
 
   return (
     <>
-    <div className="boar-form">
+    <div className="boar-entry-form">
+      <div className="boar-entry-form-2nd">
+
+     <h4 style={{textAlign: "center", color: "rgb(115, 115, 243)"}}>Enter new boar</h4>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-3 content-div">
           <label className="form-label">Boar Id</label>
           <input
+          required
             type="text"
             className="form-control"
             id="id"
@@ -64,7 +68,7 @@ const Boar = () => {
 
           <label className="form-label">Room number</label>
           <input
-            type="number"
+            type="text"
             className="form-control"
             id="roomNumber"
             placeholder="Enter room number"
@@ -106,9 +110,10 @@ const Boar = () => {
             onChange={handleChange}
           />
 
-          <input type="submit" className="btn btn-primary" value="Submit" />
+          <input  type="submit" className="btn btn-primary submit-btn" value="Submit" />
         </div>
       </form>
+      </div>
       </div>
     </>
   );

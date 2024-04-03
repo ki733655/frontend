@@ -44,7 +44,7 @@ const Sidebar = (props) => {
         </div>
         <div ref={dashboard} onClick={handleClick} className="dashboardLink">
           <Link key="dashboardLink" to="/" onClick={() => setName("Dashboard")}>
-            <SpaceDashboardIcon />
+            <SpaceDashboardIcon style={{marginBottom: "4px"}}/>
             <h5>Dashboard</h5>
           </Link>
         </div>
@@ -54,19 +54,19 @@ const Sidebar = (props) => {
             to="/livestock"
             onClick={() => setName("Livestock")}
           >
-            <InventoryIcon />
+            <InventoryIcon style={{marginBottom: "4px"}} />
             <h5>Livestock</h5>
           </Link>
         </div>
         <div onClick={handleClick} className="ordersLink">
           <Link key="ordersLink" to="/orders" onClick={() => setName("Orders")}>
-            <SpaceDashboardIcon />
+            <SpaceDashboardIcon style={{marginBottom: "4px"}}/>
             <h5>Orders</h5>
           </Link>
         </div>
         <div onClick={handleClick}>
           <Link key="salesLink" to="/sales" onClick={() => setName("Sales")}>
-            <AttachMoneyIcon />
+            <AttachMoneyIcon style={{marginBottom: "4px"}}/>
             <h5>Sales</h5>
           </Link>
         </div>
@@ -76,7 +76,7 @@ const Sidebar = (props) => {
             to="/employee"
             onClick={() => setName("Employee")}
           >
-            <SpaceDashboardIcon />
+            <SpaceDashboardIcon style={{marginBottom: "4px"}}/>
             <h5>Employee</h5>
           </Link>
         </div>
