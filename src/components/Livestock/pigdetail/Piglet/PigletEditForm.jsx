@@ -38,11 +38,14 @@ const PigletEditForm = ({ editItem, setEditItem }) => {
       // Clear the form data after successful submission
       setFormData({
         id: "",
-        roomNumber: "",
-        CSF: "",
-        FMD: "",
-        Deworm: "",
-        Weight: "",
+      motherId: "",
+      fatherId:  "",
+      dob: "",
+      gender:  "",
+      roomNumber:  "",
+      swineFever:  "",
+      deworming:  "",
+      weight: "",
       });
       // Reset editItem to null to exit edit mode
       setEditItem(null);
@@ -96,9 +99,9 @@ const PigletEditForm = ({ editItem, setEditItem }) => {
               />
               <label className="form-label">Date of birth</label>
               <input
-                type="text"
+                type="date"
                 className="form-control"
-                id="motherId"
+                id="dob"
                 placeholder="Enter date of birth"
                 value={formData.dob}
                 onChange={handleChange}

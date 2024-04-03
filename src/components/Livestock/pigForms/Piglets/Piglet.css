@@ -1,4 +1,4 @@
-.khassi-entry-form{
+.piglet-entry-form{
     /* padding-left: 2.5vw; */
     padding-top: 4vh;
     /* border: 1px solid black; */
@@ -17,7 +17,7 @@
 }
 
 
-.khassi-entry-form-2nd{
+.piglet-entry-form-2nd{
     /* border: 1px solid black; */
     overflow: auto;
     padding: 20px;

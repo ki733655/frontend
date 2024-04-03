@@ -1,6 +1,7 @@
-import axios from "axios";
-import "./Khassi.css";
-import { useState } from "react";
+import { useState } from 'react';
+import "./Khassi.css"
+import axios from 'axios'; // Import Axios for making HTTP requests
+
 const Khassi = () => {
   const [formData, setFormData] = useState({
     id: '',
@@ -18,8 +19,7 @@ const Khassi = () => {
       [id]: value
     }));
   };
- 
-  // form submission logic
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -46,31 +46,38 @@ const Khassi = () => {
       console.error('Error occurred:', error);
     }
   };
+
   return (
     <>
-      <form onSubmit={handleSubmit} className="khassi-form">
-        <div className="mb-3">
+    <div className="khassi-entry-form">
+      <div className="khassi-entry-form-2nd">
+
+     <h4 style={{textAlign: "center", color: "rgb(115, 115, 243)"}}>Enter new khassi</h4>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3 content-div">
           <label className="form-label">Khassi Id</label>
           <input
+          required
             type="text"
             className="form-control"
             id="id"
-            placeholder="Enter Khassi id"
+            placeholder="Enter khassi id"
             value={formData.id}
             onChange={handleChange}
-          ></input>
+          />
 
           <label className="form-label">Room number</label>
           <input
-            type="number"
+            type="text"
             className="form-control"
             id="roomNumber"
             placeholder="Enter room number"
             value={formData.roomNumber}
             onChange={handleChange}
-          ></input>
+          />
+          
           <label className="form-label">Select the date of CSF</label>
-          <input
+          <input 
             type="date"
             className="form-control"
             id="csfDate"
@@ -78,15 +85,15 @@ const Khassi = () => {
             onChange={handleChange}
           />
           <label className="form-label">Select the date of FMD</label>
-          <input
+          <input 
             type="date"
             className="form-control"
             id="fmdDate"
             value={formData.fmdDate}
             onChange={handleChange}
           />
-          <label className="form-label">Select the date of Deworn</label>
-          <input
+          <label className="form-label">Select the date of Deworm</label>
+          <input 
             type="date"
             className="form-control"
             id="dewormDate"
@@ -94,7 +101,7 @@ const Khassi = () => {
             onChange={handleChange}
           />
           <label className="form-label">Weight</label>
-          <input
+          <input 
             type="number"
             className="form-control"
             id="weight"
@@ -102,9 +109,12 @@ const Khassi = () => {
             value={formData.weight}
             onChange={handleChange}
           />
-          <input type="submit" className="btn btn-primary" value="Submit" />
+
+          <input  type="submit" className="btn btn-primary submit-btn" value="Submit" />
         </div>
       </form>
+      </div>
+      </div>
     </>
   );
 };
