@@ -11,7 +11,7 @@
 
 .sidebar-2nd  div{
     list-style: none;
-    border-radius: 5px;
+    border-radius: 2vh;
     /* background-color: aqua; */
     margin-top: 3vh;
     /* background-color: aliceblue; */
@@ -30,5 +30,46 @@
 }
 .sidebar-2nd div a h5{
     padding-left: 2vw;
+    font-size: 3.5vh;
 }
 
+/* drop down logic */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    bottom: 2vh;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Positioning the dropdown */
+.dropdown-content {
+    top: -4vh; /* Dropdown below the triggering element */
+    left: 2vw;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
