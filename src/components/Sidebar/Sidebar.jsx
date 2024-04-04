@@ -5,6 +5,7 @@ import InventoryIcon from "@mui/icons-material/Inventory";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const Sidebar = (props) => {
   const [activeDiv, setActiveDiv] = useState(null);
@@ -31,7 +32,7 @@ const Sidebar = (props) => {
   const initial = () => {
     const data = dashboard.current;
     data.style.backgroundColor = "#78ccf0";
-    setActiveDiv(data)
+    setActiveDiv(data);
   };
 
   const setName = props.value;
@@ -39,13 +40,14 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar-main">
       <div className="sidebar-2nd">
-        <div className="companyName" style={{ paddingBottom: "30px" }}>
-          <h5>CompanyName</h5>
+        <div className="companyName" style={{ paddingBottom: "5vh" }}>
+          <h5 style={{fontSize: "4vh"}}>CompanyName</h5>
         </div>
         <div ref={dashboard} onClick={handleClick} className="dashboardLink">
           <Link key="dashboardLink" to="/" onClick={() => setName("Dashboard")}>
-            <SpaceDashboardIcon style={{marginBottom: "4px"}}/>
-            <h5>Dashboard</h5>
+            <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
+            <h5>Dashboard</h5> 
+           
           </Link>
         </div>
         <div onClick={handleClick} className="livestockLink">
@@ -54,19 +56,35 @@ const Sidebar = (props) => {
             to="/livestock"
             onClick={() => setName("Livestock")}
           >
-            <InventoryIcon style={{marginBottom: "4px"}} />
+            <InventoryIcon style={{ marginBottom: "1vh" , fontSize: "4vh"}} />
             <h5>Livestock</h5>
+            <div className="dropdown">
+              <IoIosArrowDropdownCircle style={{fontSize: "3vh"}} />
+              <div className="dropdown-content">
+                
+                <Link to= "/livestock/addboar">Add boar</Link>
+                <Link to= "/livestock/addsow">Add sow</Link>
+                <Link to= "/livestock/addpiglets">Add piglet</Link>
+                <Link to= "/livestock/addkhassi">Add khassi</Link>
+                <hr />
+                <Link to= "/livestock/totalboar">Boar details</Link>
+                <Link to= "/livestock/totalsow">Sow details</Link>
+                <Link to= "/livestock/totalpiglet">Piglets details</Link>
+                <Link to= "/livestock/totalkhassi">Khassi details</Link>
+
+              </div>
+            </div>
           </Link>
         </div>
         <div onClick={handleClick} className="ordersLink">
           <Link key="ordersLink" to="/orders" onClick={() => setName("Orders")}>
-            <SpaceDashboardIcon style={{marginBottom: "4px"}}/>
+            <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Orders</h5>
           </Link>
         </div>
         <div onClick={handleClick}>
           <Link key="salesLink" to="/sales" onClick={() => setName("Sales")}>
-            <AttachMoneyIcon style={{marginBottom: "4px"}}/>
+            <AttachMoneyIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Sales</h5>
           </Link>
         </div>
@@ -76,7 +94,7 @@ const Sidebar = (props) => {
             to="/employee"
             onClick={() => setName("Employee")}
           >
-            <SpaceDashboardIcon style={{marginBottom: "4px"}}/>
+            <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Employee</h5>
           </Link>
         </div>
