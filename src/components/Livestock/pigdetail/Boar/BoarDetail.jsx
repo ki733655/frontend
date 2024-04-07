@@ -15,7 +15,10 @@ const BoarDetail = () => {
   const [boarData, setBoarData] = useState([]);
   const [editItem, setEditItem] = useState(null); // State to hold the item being edited
   // const [editConfirm, setEditConfirm] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryId, setSearchQueryId] = useState("");
+  const [searchQueryRoomNumber, setSearchQueryRoomNumber] = useState("");
+  const [searchQueryWeight, setSearchQueryWeight] = useState("");
+
 
   // Fetching the data from the database
   useEffect(() => {
@@ -68,14 +71,14 @@ const BoarDetail = () => {
 const handleSearch = async (e) => {
   e.preventDefault();
   try {
-    if (searchQuery.trim() === "") {
+    if (searchQueryId.trim() === "") {
       // If search query is empty, fetch all details
       const response = await axios.get("http://localhost:3000/boar-details");
       setBoarData(response.data);
     } else {
       // If search query is not empty, perform search
       const response = await axios.get(
-        `http://localhost:3000/boar-search?search=${searchQuery}`
+        `http://localhost:3000/boar-search?search=${searchQueryId}`
       );
       setBoarData(response.data);
     }
@@ -85,9 +88,9 @@ const handleSearch = async (e) => {
 };
 
 
-const handleChange = async (e) => {
+const handleChangeId = async (e) => {
   const data = e.target.value;
-  setSearchQuery(data);
+  setSearchQueryId(data);
   try {
     if (data.trim() === "") {
       // If search query is empty, fetch all details
@@ -96,7 +99,47 @@ const handleChange = async (e) => {
     } else {
       // If search query is not empty, perform search
       const response = await axios.get(
-        `http://localhost:3000/boar-search?search=${data}`
+        `http://localhost:3000/boar-search-id?search=${data}`
+      );
+      setBoarData(response.data);
+    }
+  } catch (error) {
+    console.log("Error searching data", error);
+  }
+};
+
+const handleChangeRoomNumber = async (e) => {
+  const data = e.target.value;
+  setSearchQueryRoomNumber(data);
+  try {
+    if (data.trim() === "") {
+      // If search query is empty, fetch all details
+      const response = await axios.get("http://localhost:3000/boar-details");
+      setBoarData(response.data);
+    } else {
+      // If search query is not empty, perform search
+      const response = await axios.get(
+        `http://localhost:3000/boar-search-roomNumber?search=${data}`
+      );
+      setBoarData(response.data);
+    }
+  } catch (error) {
+    console.log("Error searching data", error);
+  }
+};
+
+const handleChangeWeight = async (e) => {
+  const data = e.target.value;
+  setSearchQueryWeight(data);
+  try {
+    if (data.trim() === "") {
+      // If search query is empty, fetch all details
+      const response = await axios.get("http://localhost:3000/boar-details");
+      setBoarData(response.data);
+    } else {
+      // If search query is not empty, perform search
+      const response = await axios.get(
+        `http://localhost:3000/boar-search-weight?search=${data}`
       );
       setBoarData(response.data);
     }
@@ -112,17 +155,36 @@ const handleChange = async (e) => {
   return (
     <div className="boar-detail-main">
       <div className="boar-detail-2nd">
-        <Form inline className="boar-detail-search">
+        <Form inline className="boar-detail-form">
           <h4 style={{ fontWeight: "600" }}>All boars detail</h4>
-          <Row>
+          <Row className="boar-detail-row">
             <Col xs="auto" className="boar-detail-column">
               <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
                 type="text"
-                placeholder="Search"
+                placeholder="Search by id"
                 className=" mr-sm-2"
-                value={searchQuery}
+                value={searchQueryId}
                 // onChange={(e) => setSearchQuery(e.target.value)}
-                onChange={handleChange }
+                onChange={handleChangeId }
+              />
+              <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
+                type="text"
+                placeholder="Search by room number"
+                className=" mr-sm-2"
+                value={searchQueryRoomNumber}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeRoomNumber }
+              />
+               <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
+                type="text"
+                placeholder="Search by weight"
+                className=" mr-sm-2"
+                value={searchQueryWeight}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeWeight }
               />
             </Col>
             <Col xs="auto">

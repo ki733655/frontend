@@ -1,10 +1,10 @@
-.boar-detail-main{
+.orders-main{
     /* border: 1px soild black; */
     padding: 2%;
     background-color: aliceblue;
 }
 
-.boar-detail-2nd{
+.orders-main-2nd{
     background-color: white;
     padding: 2%;
     padding-top: 4px;
@@ -12,12 +12,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
 }
 
-.boar-detail-table thead tr th{
+.orders-detail-table thead tr th{
     background-color: rgb(187, 221, 250);
 }
 
 
-.boar-detail-form{
+.orders-detail-form{
     /* border: 1px solid black; */
     height: 10vh;
     width: 100%;
@@ -26,26 +26,26 @@
     justify-content: space-between;
 }
 
-.boar-detail-row{
+.orders-detail-row{
     /* border: 1px solid black; */
-    width: 47vw;
+    width: 35vw;
     display: flex;
     justify-content: space-between;
 }
 
-.boar-detail-column{
+.orders-detail-column{
     /* border: 1px solid black; */
     /* width: 50vw; */
     display: flex;
     justify-content: space-evenly;
 }
-.boar-detail-column input{
+.orders-detail-column input{
     width: 30vw;
     margin-left: 0vw;
     background-color: rgb(230, 237, 237);
 }
 
-.boar-detail-logo{
+.orders-detail-logo{
     display: flex;
 }
 

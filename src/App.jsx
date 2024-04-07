@@ -5,7 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Livestock from "./components/Livestock/Livestock";
 import Sales from "./components/Sales";
 import Employee from "./components/Employee";
-import Orders from "./components/Orders";
+import Orders from "./components/Orders/Orders";
 import Nav from "./components/Nav/Nav";
 import Boar from "./components/Livestock/pigForms/Boar/Boar";
 import Sow from "./components/Livestock/pigForms/Sow/Sow";
@@ -18,6 +18,7 @@ import KhassiDetail from "./components/Livestock/pigdetail/Khassi/KhassiDetail";
 import Login from "./components/Login/Login";
 import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0 hook
 import Piglet from "./components/Livestock/pigForms/Piglets/Piglet";
+import OrdersForm from "./components/Orders/OrdersForm/OrdersForm";
 
 function App() {
   const { isAuthenticated, isLoading } = useAuth0(); // Destructure isAuthenticated and isLoading from useAuth0 hook
@@ -78,9 +79,12 @@ function App() {
                         path="/livestock/totalkhassi"
                         element={<KhassiDetail />}
                       />
+                    {/* {Below is the all orders routes} */}
+                      <Route path="/order" element={<Orders />} />
+                      <Route path="/order/addorder" element={<OrdersForm />} />
+
 
                       <Route path="/sales" element={<Sales />} />
-                      <Route path="/orders" element={<Orders />} />
                       <Route path="/employee" element={<Employee />} />
                     </Routes>
                   </div>
