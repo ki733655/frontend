@@ -77,9 +77,17 @@ const Sidebar = (props) => {
           </Link>
         </div>
         <div onClick={handleClick} className="ordersLink">
-          <Link key="ordersLink" to="/orders" onClick={() => setName("Orders")}>
+          <Link key="ordersLink" to="/order" onClick={() => setName("Orders")}>
             <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Orders</h5>
+            <div className="dropdown">
+              <IoIosArrowDropdownCircle style={{fontSize: "3vh"}} />
+              <div className="dropdown-content">
+                
+                <Link to= "/order/addorder">Add Order</Link>
+
+              </div>
+            </div>
           </Link>
         </div>
         <div onClick={handleClick}>
