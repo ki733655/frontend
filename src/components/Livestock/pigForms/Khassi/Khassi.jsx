@@ -4,7 +4,7 @@ import axios from 'axios'; // Import Axios for making HTTP requests
 
 const Khassi = () => {
   const [formData, setFormData] = useState({
-    id: '',
+    id: 'k-',
     roomNumber: '',
     csfDate: '',
     fmdDate: '',

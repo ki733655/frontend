@@ -87,10 +87,8 @@ const Orders = () => {
               <tr>
                 <th>Order Id</th>
                 <th>Customer Name</th>
-                <th>Boar</th>
-                <th>Sow</th>
-                <th>Piglet</th>
-                <th>Khassi</th>
+                <th>Pig Id's</th>
+                <th>Total weight</th>
                 <th>Address</th>
                 <th>Advance</th>
                 <th>Final payment</th>

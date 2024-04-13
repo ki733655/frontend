@@ -4,7 +4,7 @@ import axios from 'axios'; // Import Axios for making HTTP requests
 
 const Boar = () => {
   const [formData, setFormData] = useState({
-    id: '',
+    id: 'b-',
     roomNumber: '',
     csfDate: '',
     fmdDate: '',
