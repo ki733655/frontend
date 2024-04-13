@@ -4,7 +4,7 @@ import axios from 'axios'; // Import Axios for making HTTP requests
 
 const Sow = () => {
   const [formData, setFormData] = useState({
-    id: '',
+    id: 's-',
     roomNumber: '',
     csfDate: '',
     fmdDate: '',
