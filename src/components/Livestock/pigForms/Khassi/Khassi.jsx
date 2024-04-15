@@ -32,7 +32,7 @@ const Khassi = () => {
       
       // Reset the form data after successful submission
       setFormData({
-        id: '',
+        id: 'k-',
         roomNumber: '',
         csfDate: '',
         fmdDate: '',

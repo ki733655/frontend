@@ -46,7 +46,7 @@ const handleSubmit = async (e) => {
 
     // Reset the form data after successful submission
     setFormData({
-      id: "",
+      id: "p-",
       motherId: "",
       fatherId: "",
       dob: "",

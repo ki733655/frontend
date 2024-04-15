@@ -32,7 +32,7 @@ const Boar = () => {
       
       // Reset the form data after successful submission
       setFormData({
-        id: '',
+        id: 'b-',
         roomNumber: '',
         csfDate: '',
         fmdDate: '',
