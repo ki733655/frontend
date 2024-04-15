@@ -143,6 +143,7 @@ const OrdersForm = () => {
               id="pigIds"
               labelKey="label"
               multiple
+              value= {formData.pigIds}
               isLoading={isLoading}
               options={pigOptions}
               onChange={handlePigIdChange}

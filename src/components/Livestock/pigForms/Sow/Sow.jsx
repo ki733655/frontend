@@ -32,7 +32,7 @@ const Sow = () => {
       
       // Reset the form data after successful submission
       setFormData({
-        id: '',
+        id: 's-',
         roomNumber: '',
         csfDate: '',
         fmdDate: '',
