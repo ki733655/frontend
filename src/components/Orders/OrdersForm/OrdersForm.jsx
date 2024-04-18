@@ -5,7 +5,7 @@ import "react-bootstrap-typeahead/css/Typeahead.css";
 import "./OrdersForm.css";
 
 const OrdersForm = () => {
-  const [formData, setFormData] = useState({
+  const initialForm = {
     orderId: "",
     customerName: "",
     pigIds: [],
@@ -16,15 +16,14 @@ const OrdersForm = () => {
     phoneNumber: "",
     comment: "",
     deliveryDate: "",
-    deliveryStatus: "",
-  });
+    deliveryStatus: "pending",
+  }
+  const [formData, setFormData] = useState(initialForm);
 
   const [pigOptions, setPigOptions] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchPigOptions = async () => {
-      setIsLoading(true);
       try {
         const responseBoar = await axios.get(
           "http://localhost:3000/boar-details"
@@ -43,7 +42,7 @@ const OrdersForm = () => {
           ...responseBoar.data,
           ...responseSow.data,
           ...responseKhassi.data,
-          responsePiglet.data,
+          ...responsePiglet.data,
         ];
 
         const options = response.map((pig) => ({
@@ -54,12 +53,20 @@ const OrdersForm = () => {
       } catch (error) {
         console.error("Error fetching pig options:", error);
       }
-      setIsLoading(false);
     };
 
     fetchPigOptions();
   }, []);
 
+  
+  const handlePigIdChange = (selectedOptions) => {
+    const selectedPigIds = selectedOptions.map((option) => option.id);
+    setFormData((prevData) => ({
+      ...prevData,
+      pigIds: selectedPigIds,
+    }));
+  };
+  
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -68,46 +75,32 @@ const OrdersForm = () => {
     }));
   };
 
-  const handlePigIdChange = (selectedOptions) => {
-    const selectedPigIds = selectedOptions.map((option) => option.id);
-    setFormData((prevData) => ({
-      ...prevData,
-      pigIds: selectedPigIds,
-    }));
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post(
         "http://localhost:3000/submit-form-order",
         formData
       );
-
+  
       console.log("Form submitted successfully:", response.data);
-
+  
       // Reset form data after successful submission
       setFormData({
-        orderId: "",
-        customerName: "",
-        pigIds: [],
-        totalWeight: "",
-        address: "",
-        advance: "",
-        finalPayment: "",
-        phoneNumber: "",
-        comment: "",
-        deliveryDate: "",
-        deliveryStatus: "",
+        ...initialForm, // Reset all form fields
+        pigIds: [], // Reset pigIds array specifically
       });
-
+  
       alert("Order submitted successfully!");
+      window.location.reload();
     } catch (error) {
       console.error("Error submitting form:", error);
       alert("Failed to submit order. Please try again.");
     }
   };
+  
+
 
   return (
     <div className="orders-entry-form">
@@ -143,8 +136,8 @@ const OrdersForm = () => {
               id="pigIds"
               labelKey="label"
               multiple
-              value= {formData.pigIds}
-              isLoading={isLoading}
+              // selected={formData.pigIds}
+              value={formData.pigIds}
               options={pigOptions}
               onChange={handlePigIdChange}
               placeholder="Search and select pig IDs"
@@ -220,7 +213,12 @@ const OrdersForm = () => {
             />
 
             <label className="form-label">Delivery Status</label>
-            <select name="" id="deliveryStatus">
+            <select
+              name="deliveryStatus"
+              id="deliveryStatus"
+              value={formData.deliveryStatus}
+              onChange={handleChange}
+            >
               <option selected>Select from the list</option>
               <option value="pending">pending</option>
               <option value="delivered">delivered</option>
