@@ -1,81 +1,140 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./OrdersEditForm.css";
 import { MdCancel } from "react-icons/md";
 import axios from "axios"; // Import Axios for making HTTP requests
+import { Typeahead } from "react-bootstrap-typeahead";
 
 const OrdersEditForm = ({ editItem, setEditItem }) => {
-  // if (!editItem) return null;
+    if (!editItem) return null;
 
-  // const initialFormData = {
-  //   id: editItem.id || "",
-  //   roomNumber: editItem.roomNumber || "",
-  //   CSF: editItem.CSF || "",
-  //   FMD: editItem.FMD || "",
-  //   Deworm: editItem.Deworm || "",
-  //   Weight: editItem.Weight || "",
-  // };
+    const initialFormData = {
+        orderId: editItem.orderId || "",
+        customerName: editItem.customerName || "",
+        pigIds: editItem.pigIds || [],
+        totalWeight: editItem.totalWeight || "",
+        address: editItem.address || "",
+        advance: editItem.advance || "",
+        finalPayment: editItem.finalPayment || "",
+        phoneNumber: editItem.phoneNumber || "",
+        comment: editItem.comment || "",
+        deliveryDate: editItem.deliveryDate || "",
+        deliveryStatus: editItem.deliveryStatus || "pending",
+      }
+  
+    const [formData, setFormData] = useState(initialFormData);
+  
+    const handleChange = (e) => {
+      const { id, value } = e.target;
+      setFormData((prevData) => ({
+        ...prevData,
+        [id]: value,
+      }));
+    };
 
-  // const [formData, setFormData] = useState(initialFormData);
+    const [pigOptions, setPigOptions] = useState([]);
 
-  // const handleChange = (e) => {
-  //   const { id, value } = e.target;
-  //   setFormData((prevData) => ({
-  //     ...prevData,
-  //     [id]: value,
-  //   }));
-  // };
+  useEffect(() => {
+    const fetchPigOptions = async () => {
+      try {
+        const responseBoar = await axios.get(
+          "http://localhost:3000/boar-details"
+        );
+        const responseSow = await axios.get(
+          "http://localhost:3000/sow-details"
+        );
+        const responseKhassi = await axios.get(
+          "http://localhost:3000/khassi-details"
+        );
+        const responsePiglet = await axios.get(
+          "http://localhost:3000/piglet-details"
+        );
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
+        const response = [
+          ...responseBoar.data,
+          ...responseSow.data,
+          ...responseKhassi.data,
+          ...responsePiglet.data,
+        ];
 
-  //   try {
-  //     // Assuming your server endpoint is expecting the edited data as JSON in the request body
-  //     await axios.put("http://localhost:3000/boar-edit", formData);
-  //     alert("Data updated successfully");
-  //     // Clear the form data after successful submission
-  //     setFormData({
-  //       id: "",
-  //       roomNumber: "",
-  //       CSF: "",
-  //       FMD: "",
-  //       Deworm: "",
-  //       Weight: "",
-  //     });
-  //     // Reset editItem to null to exit edit mode
-  //     setEditItem(null);
-  //     // Fetching the updated data after deletion
-  //   } catch (error) {
-  //     // Handle error if the request fails
-  //     console.error("Error occurred:", error);
-  //   }
-  // };
+        const options = response.map((pig) => ({
+          id: pig.id,
+          label: `${pig.id}`,
+        }));
+        setPigOptions(options);
+      } catch (error) {
+        console.error("Error fetching pig options:", error);
+      }
+    };
+
+    fetchPigOptions();
+  }, []);
+
+  
+  const handlePigIdChange = (selectedOptions) => {
+    const selectedPigIds = selectedOptions.map((option) => option.id);
+    setFormData((prevData) => ({
+      ...prevData,
+      pigIds: selectedPigIds,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      // Assuming your server endpoint is expecting the edited data as JSON in the request body
+      await axios.put("http://localhost:3000/order-edit", formData);
+      alert("Data updated successfully");
+      // Clear the form data after successful submission
+      setFormData({
+            orderId: "",
+            customerName: "",
+            pigIds: [],
+            totalWeight: "",
+            address: "",
+            advance: "",
+            finalPayment: "",
+            phoneNumber: "",
+            comment: "",
+            deliveryDate: "",
+            deliveryStatus: "pending",
+      });
+      // Reset editItem to null to exit edit mode
+      setEditItem(null);
+      // Fetching the updated data after deletion
+      
+      
+    } catch (error) {
+      // Handle error if the request fails
+      console.error("Error occurred:", error);
+    }
+  };
+
+  
 
   return (
     <>
-      <div className="orders-form">
-        <div className="orders-form-container">
+      <div className="boar-form">
+        <div className="boar-form-container">
           <div className="pig-header">
             <h4 style={{ textAlign: "center" }}>Edit order details</h4>
-            <MdCancel
-              style={{ fontSize: "4vh" }}
-              onClick={() => setEditItem(null)}
-            />
+            <MdCancel style={{fontSize: "4vh"}} onClick={() => setEditItem(null)} />
           </div>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label className="form-label">Order Id</label>
               <input
-                type="text"
+                type="text number"
                 className="form-control"
-                id="id"
-                placeholder="Enter boar id"
-                value={formData.id}
+                id="orderId"
+                placeholder="Enter order id"
+                value={formData.orderId}
                 onChange={handleChange}
               />
 
-              <label className="form-label">Customer name</label>
+              <label className="form-label">Customer Name</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="customerName"
                 placeholder="Enter customer name"
@@ -83,98 +142,90 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
                 onChange={handleChange}
               />
 
-              <label className="form-label">Boar</label>
+              <label className="form-label">Enter pig IDs</label>
+              <Typeahead
+              id="pigIds"
+              labelKey="label"
+              multiple
+            //   selected={formData.pigIds}
+              value={formData.pigIds}
+              options={pigOptions}
+              onChange={handlePigIdChange}
+              placeholder="Search and select pig IDs"
+            />
+              <label className="form-label">Enter the total weight</label>
               <input
                 type="number"
                 className="form-control"
-                id="boar"
-                value={formData.boar}
+                id="totalWeight"
+                value={formData.totalWeight}
                 onChange={handleChange}
               />
-              <label className="form-label">Sow</label>
+              <label className="form-label">Enter the address</label>
               <input
-                type="number"
-                className="form-control"
-                id="sow"
-                value={formData.sow}
-                onChange={handleChange}
-              />
-              <label className="form-label">Khassi</label>
-              <input
-                type="number"
-                className="form-control"
-                id="khassi"
-                value={formData.khassi}
-                onChange={handleChange}
-              />
-              <label className="form-label">Piglet</label>
-              <input
-                type="number"
-                className="form-control"
-                id="piglet"
-                value={formData.piglet}
-                onChange={handleChange}
-              />
-              <label className="form-label">Address</label>
-              <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="address"
-                placeholder="Enter the address"
                 value={formData.address}
                 onChange={handleChange}
               />
-              <label className="form-label">Advance</label>
+              <label className="form-label">Enter the advance</label>
               <input
                 type="number"
                 className="form-control"
                 id="advance"
+                placeholder="in kgs"
                 value={formData.advance}
                 onChange={handleChange}
               />
-              <label className="form-label">Final payment</label>
+              <label className="form-label">Enter the Final payment</label>
               <input
                 type="number"
                 className="form-control"
                 id="finalPayment"
+                placeholder="in kgs"
                 value={formData.finalPayment}
                 onChange={handleChange}
-              />
-              <label className="form-label">Phone Number</label>
+              /><label className="form-label">Enter the Phone Numebr</label>
               <input
                 type="number"
                 className="form-control"
                 id="phoneNumber"
+                placeholder="in kgs"
                 value={formData.phoneNumber}
                 onChange={handleChange}
               />
-              <label className="form-label">Comment</label>
+              <label className="form-label">Enter comment</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="comment"
+                placeholder="in kgs"
                 value={formData.comment}
                 onChange={handleChange}
               />
-              <label className="form-label">Delivery Date</label>
+              <label className="form-label">Enter the delivery date</label>
               <input
                 type="date"
                 className="form-control"
                 id="deliveryDate"
+                placeholder="in kgs"
                 value={formData.deliveryDate}
                 onChange={handleChange}
               />
               <label className="form-label">Delivery Status</label>
-              <select id="deliveryStatus" name="options">
-                <option value="option1">Pending</option>
-                <option value="option2">Delivered</option>
-              </select>
-              <input
-                type="submit"
-                className="btn btn-primary"
-                id="boar-edit-submit"
-                value="Save"
-              />
+            <select
+              name="deliveryStatus"
+              id="deliveryStatus"
+              value={formData.deliveryStatus}
+              onChange={handleChange}
+            >
+              <option selected>Select from the list</option>
+              <option value="pending">pending</option>
+              <option value="delivered">delivered</option>
+            </select>
+
+              <input type="submit" className="btn btn-primary" id="boar-edit-submit" value="Save" />
             </div>
           </form>
         </div>

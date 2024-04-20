@@ -113,7 +113,7 @@ const OrdersForm = () => {
             <label className="form-label">Order Id</label>
             <input
               required
-              type="text"
+              type="text number"
               className="form-control"
               id="orderId"
               placeholder="Enter order id"

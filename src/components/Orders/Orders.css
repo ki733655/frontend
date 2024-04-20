@@ -28,7 +28,7 @@
 
 .orders-detail-row{
     /* border: 1px solid black; */
-    width: 35vw;
+    width: 48vw;
     display: flex;
     justify-content: space-between;
 }
