@@ -28,7 +28,7 @@
 
 .orders-detail-row{
     /* border: 1px solid black; */
-    width: 48vw;
+    width: 50vw;
     display: flex;
     justify-content: space-between;
 }
@@ -61,4 +61,7 @@
 }
 #edit:hover{
     color: rgb(134, 134, 215);
+}
+.orders-add-btn{
+    background-color: red;
 }

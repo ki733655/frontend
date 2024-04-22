@@ -40,10 +40,11 @@ const Sow = () => {
         weight: ''
       });
       
-      alert("Data added successfully");
+      alert(" 😄 Data added successfully"); 
     } catch (error) {
       // Handle error if the request fails
       console.error('Error occurred:', error);
+      alert(" 😥 Something went wrong") 
     }
   };
 

@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar/Sidebar";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import Livestock from "./components/Livestock/Livestock";
-import Sales from "./components/Sales";
-import Employee from "./components/Employee";
+import Sales from "./components/Sales/Sales";
+import Employee from "./components/Employee/Employee";
 import Orders from "./components/Orders/Orders";
 import Nav from "./components/Nav/Nav";
 import Boar from "./components/Livestock/pigForms/Boar/Boar";
