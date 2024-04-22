@@ -1,0 +1,45 @@
+.dash-main{
+    background-color: aliceblue;
+    height: 100%;
+}
+
+.dash-top{
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.dash-pigs{
+    /* border:  1px solid black; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+    height: 13vh;
+    width: 14vw;
+    border-radius: 1vh;
+    text-align: center;
+    padding: 1vh;
+    background-color: white;
+}
+.dash-orders{
+    /* border:  1px solid black; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+
+    height: 13vh;
+    width: 14vw;
+    border-radius: 1vh;
+    text-align: center;
+    padding: 1vh;
+    background-color: white;
+
+}.dash-sales{
+    /* border:  1px solid black; */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+
+    height: 13vh;
+    width: 14vw;
+    border-radius: 1vh;
+    text-align: center;
+    padding: 1vh;
+    background-color: white;
+
+}

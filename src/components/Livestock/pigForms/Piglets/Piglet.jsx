@@ -57,10 +57,11 @@ const handleSubmit = async (e) => {
       weight: "",
     });
 
-    alert("Data added successfully");
+    alert(" 😄 Data added successfully"); 
   } catch (error) {
     // Handle error if the request fails
-    console.error("Error occurred:", error);
+    console.error('Error occurred:', error);
+    alert(" 😥 Something went wrong") 
   }
 };
   return (
