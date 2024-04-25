@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Livestock from "./components/Livestock/Livestock";
 import Sales from "./components/Sales/Sales";
 import Employee from "./components/Employee/Employee";
+import EmployeeForm from "./components/Employee/EmployeeForm/EmployeeForm";
 import Orders from "./components/Orders/Orders";
 import Nav from "./components/Nav/Nav";
 import Boar from "./components/Livestock/pigForms/Boar/Boar";
@@ -68,7 +69,13 @@ function App() {
 
 
                       <Route path="/sales" element={<Sales />} />
+
+                      {/* {Below is the all employee routes} */}
                       <Route path="/employee" element={<Employee />} />
+                      <Route
+                        path="/employee/addemployee"
+                        element={<EmployeeForm />}
+                      />
                     </Routes>
                   </div>
         </div>

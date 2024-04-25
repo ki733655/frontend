@@ -52,7 +52,7 @@ const Sidebar = (props) => {
             <h5>Dashboard</h5>
           </Link>
         </div>
-        
+
         <div onClick={(e) => handleClick(e, "Livestock")} className="livestockLink" id="Livestock">
           <Link to="/livestock" onClick={() => setName("Livestock")}>
             <InventoryIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
@@ -98,12 +98,19 @@ const Sidebar = (props) => {
         </div>
 
         {/* Sample Employee Link */}
-        <div onClick={(e) => handleClick(e, "Employee")} className="employeeLink" id="Employee">
-          <Link to="/employee" onClick={() => setName("Employee")}>
+        <div className="employeeLink" id="Employee">
+          <Link to="/employee" onClick={(e) => { handleClick(e, "Employee"); setName("Employee"); }}>
             <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Employee</h5>
+            <div className="dropdown">
+              <IoIosArrowDropdownCircle style={{ fontSize: "3vh" }} />
+              <div className="dropdown-content">
+                <Link to="/employee/addemployee">Add Employee</Link>
+              </div>
+            </div>
           </Link>
         </div>
+
       </div>
     </div>
   );
