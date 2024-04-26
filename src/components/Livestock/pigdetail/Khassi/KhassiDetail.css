@@ -1,5 +1,5 @@
 .khassi-detail-main{
-    border: 1px soild black;
+    /* border: 1px soild black; */
     padding: 2%;
     background-color: aliceblue;
 }
@@ -17,7 +17,7 @@
 }
 
 
-.khassi-detail-search{
+.khassi-detail-form{
     /* border: 1px solid black; */
     height: 10vh;
     width: 100%;
@@ -26,7 +26,19 @@
     justify-content: space-between;
 }
 
-/* search input */
+.khassi-detail-row{
+    /* border: 1px solid black; */
+    width: 47vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.khassi-detail-column{
+    /* border: 1px solid black; */
+    /* width: 50vw; */
+    display: flex;
+    justify-content: space-evenly;
+}
 .khassi-detail-column input{
     width: 30vw;
     margin-left: 0vw;

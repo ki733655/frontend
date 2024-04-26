@@ -15,7 +15,7 @@ const BoarDetail = () => {
   const [boarData, setBoarData] = useState([]);
   const [editItem, setEditItem] = useState(null); // State to hold the item being edited
   // const [editConfirm, setEditConfirm] = useState(false)
-  const [searchQueryId, setSearchQueryId] = useState("");
+  const [searchQueryId, setSearchQueryId] = useState("b-");
   const [searchQueryRoomNumber, setSearchQueryRoomNumber] = useState("");
   const [searchQueryWeight, setSearchQueryWeight] = useState("");
 
@@ -66,33 +66,13 @@ const BoarDetail = () => {
       console.log(error);
     }
   };
-  //logic for handling the search field
-  // Logic for handling the search field
-const handleSearch = async (e) => {
-  e.preventDefault();
-  try {
-    if (searchQueryId.trim() === "") {
-      // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/boar-details");
-      setBoarData(response.data);
-    } else {
-      // If search query is not empty, perform search
-      const response = await axios.get(
-        `http://localhost:3000/boar-search?search=${searchQueryId}`
-      );
-      setBoarData(response.data);
-    }
-  } catch (error) {
-    console.log("Error searching data", error);
-  }
-};
 
 
 const handleChangeId = async (e) => {
   const data = e.target.value;
   setSearchQueryId(data);
   try {
-    if (data.trim() === "") {
+    if (data.trim() === "b-") {
       // If search query is empty, fetch all details
       const response = await axios.get("http://localhost:3000/boar-details");
       setBoarData(response.data);
@@ -188,7 +168,7 @@ const handleChangeWeight = async (e) => {
               />
             </Col>
             <Col xs="auto">
-              <Button onClick={handleSearch} type="submit">
+              <Button type="submit">
                 Submit
               </Button>
             </Col>
@@ -203,6 +183,7 @@ const handleChangeWeight = async (e) => {
               <th>FMD</th>
               <th>Deworm</th>
               <th>Weight</th>
+              <th>Note</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -227,6 +208,8 @@ const handleChangeWeight = async (e) => {
                   <td>{FMD}</td>
                   <td>{Deworm}</td>
                   <td>{value.Weight ? value.Weight : "Null"}</td>
+                  <td>{value.note ? value.note : "Null"}</td>
+
                   <td className="boar-detail-logo">
                     <div className="delete-logo">
                       <MdDelete

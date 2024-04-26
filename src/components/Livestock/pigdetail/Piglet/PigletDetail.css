@@ -1,5 +1,5 @@
 .piglet-detail-main{
-    border: 1px soild black;
+    /* border: 1px soild black; */
     padding: 2%;
     background-color: aliceblue;
 }
@@ -17,7 +17,7 @@
 }
 
 
-.piglet-detail-search{
+.piglet-detail-form{
     /* border: 1px solid black; */
     height: 10vh;
     width: 100%;
@@ -26,7 +26,19 @@
     justify-content: space-between;
 }
 
-/* search input */
+.piglet-detail-row{
+    /* border: 1px solid black; */
+    width: 47vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.piglet-detail-column{
+    /* border: 1px solid black; */
+    /* width: 50vw; */
+    display: flex;
+    justify-content: space-evenly;
+}
 .piglet-detail-column input{
     width: 30vw;
     margin-left: 0vw;

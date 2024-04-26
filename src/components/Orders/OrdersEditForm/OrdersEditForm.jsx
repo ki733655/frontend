@@ -157,6 +157,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
               <input
                 type="number"
                 className="form-control"
+                placeholder="in kgs"
                 id="totalWeight"
                 value={formData.totalWeight}
                 onChange={handleChange}
@@ -165,6 +166,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
               <input
                 type="text"
                 className="form-control"
+                placeholder="Enter customer address"
                 id="address"
                 value={formData.address}
                 onChange={handleChange}
@@ -174,7 +176,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
                 type="number"
                 className="form-control"
                 id="advance"
-                placeholder="in kgs"
+                placeholder="in rupees"
                 value={formData.advance}
                 onChange={handleChange}
               />
@@ -183,7 +185,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
                 type="number"
                 className="form-control"
                 id="finalPayment"
-                placeholder="in kgs"
+                placeholder="in rupees"
                 value={formData.finalPayment}
                 onChange={handleChange}
               /><label className="form-label">Enter the Phone Numebr</label>
@@ -191,7 +193,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
                 type="number"
                 className="form-control"
                 id="phoneNumber"
-                placeholder="in kgs"
+                placeholder="Enter mobile number"
                 value={formData.phoneNumber}
                 onChange={handleChange}
               />
@@ -200,7 +202,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
                 type="text"
                 className="form-control"
                 id="comment"
-                placeholder="in kgs"
+                placeholder="Enter comment"
                 value={formData.comment}
                 onChange={handleChange}
               />
@@ -209,7 +211,6 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
                 type="date"
                 className="form-control"
                 id="deliveryDate"
-                placeholder="in kgs"
                 value={formData.deliveryDate}
                 onChange={handleChange}
               />
