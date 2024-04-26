@@ -4,7 +4,9 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import SpaceDashboardIcon from "@mui/icons-material/SpaceDashboard";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import BadgeIcon from '@mui/icons-material/Badge';
 import "./Sidebar.css";
+import AirportShuttle from "@mui/icons-material/AirportShuttle";
 
 const Sidebar = (props) => {
   const [activeDiv, setActiveDiv] = useState(null);
@@ -48,17 +50,17 @@ const Sidebar = (props) => {
           id="Dashboard"
         >
           <Link to="/" onClick={() => setName("Dashboard")}>
-            <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
+            <SpaceDashboardIcon className="text-yellow-500" style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Dashboard</h5>
           </Link>
         </div>
-
+        
         <div onClick={(e) => handleClick(e, "Livestock")} className="livestockLink" id="Livestock">
           <Link to="/livestock" onClick={() => setName("Livestock")}>
-            <InventoryIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
+            <InventoryIcon className="text-green-500" style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Livestock</h5>
             <div className="dropdown">
-              <IoIosArrowDropdownCircle style={{ fontSize: "3vh" }} />
+              <IoIosArrowDropdownCircle  style={{ fontSize: "3vh" }} />
               <div className="dropdown-content">
                 <Link to="/livestock/addboar">Add boar</Link>
                 <Link to="/livestock/addsow">Add sow</Link>
@@ -78,7 +80,7 @@ const Sidebar = (props) => {
         {/* Sample Orders Link */}
         <div onClick={(e) => handleClick(e, "Orders")} className="ordersLink" id="Orders">
           <Link to="/order" onClick={() => setName("Orders")}>
-            <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
+            <AirportShuttle className="text-blue-500" style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Orders</h5>
             <div className="dropdown">
               <IoIosArrowDropdownCircle style={{ fontSize: "3vh" }} />
@@ -92,25 +94,18 @@ const Sidebar = (props) => {
         {/* Sample Sales Link */}
         <div onClick={(e) => handleClick(e, "Sales")} className="salesLink" id="Sales">
           <Link to="/sales" onClick={() => setName("Sales")}>
-            <AttachMoneyIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
+            <AttachMoneyIcon className="text-red-500" style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Sales</h5>
           </Link>
         </div>
 
         {/* Sample Employee Link */}
-        <div className="employeeLink" id="Employee">
-          <Link to="/employee" onClick={(e) => { handleClick(e, "Employee"); setName("Employee"); }}>
-            <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
+        <div onClick={(e) => handleClick(e, "Employee")} className="employeeLink" id="Employee">
+          <Link to="/employee" onClick={() => setName("Employee")}>
+            <BadgeIcon className="text-violet-500" style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Employee</h5>
-            <div className="dropdown">
-              <IoIosArrowDropdownCircle style={{ fontSize: "3vh" }} />
-              <div className="dropdown-content">
-                <Link to="/employee/addemployee">Add Employee</Link>
-              </div>
-            </div>
           </Link>
         </div>
-
       </div>
     </div>
   );

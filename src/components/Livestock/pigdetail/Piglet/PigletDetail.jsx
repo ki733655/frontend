@@ -1,8 +1,8 @@
 import axios from "axios";
 import "./PigletDetail.css";
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { MdDelete, } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 import PigletEditForm from "./PigletEditForm";
 // search field imports
@@ -15,13 +15,16 @@ const PigletDetail = () => {
   const [pigletData, setPigletData] = useState([]);
   const [editItem, setEditItem] = useState(null); // State to hold the item being edited
   // const [editConfirm, setEditConfirm] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("");
-
+  const [searchQueryId, setSearchQueryId] = useState("p-");
+  const [searchQueryRoomNumber, setSearchQueryRoomNumber] = useState("");
+  const [searchQueryWeight, setSearchQueryWeight] = useState("");
   // Fetching the data from the database
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/piglet-details");
+        const response = await axios.get(
+          "http://localhost:3000/piglet-details"
+        );
         setPigletData(response.data);
       } catch (error) {
         console.log(error);
@@ -64,71 +67,110 @@ const PigletDetail = () => {
     }
   };
   //logic for handling the search field
-  // Logic for handling the search field
-const handleSearch = async (e) => {
-  e.preventDefault();
-  try {
-    if (searchQuery.trim() === "") {
-      // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/piglet-details");
-      setPigletData(response.data);
-    } else {
-      // If search query is not empty, perform search
-      const response = await axios.get(
-        `http://localhost:3000/piglet-search?search=${searchQuery}`
-      );
-      setPigletData(response.data);
+  const handleChangeId = async (e) => {
+    const data = e.target.value;
+    setSearchQueryId(data);
+    try {
+      if (data.trim() === "p-") {
+        // If search query is empty, fetch all details
+        const response = await axios.get(
+          "http://localhost:3000/piglet-details"
+        );
+        setPigletData(response.data);
+      } else {
+        // If search query is not empty, perform search
+        const response = await axios.get(
+          `http://localhost:3000/piglet-search-id?search=${data}`
+        );
+        setPigletData(response.data);
+      }
+    } catch (error) {
+      console.log("Error searching data", error);
     }
-  } catch (error) {
-    console.log("Error searching data", error);
-  }
-};
+  };
 
-
-const handleChange = async (e) => {
-  const data = e.target.value;
-  setSearchQuery(data);
-  try {
-    if (data.trim() === "") {
-      // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/piglet-details");
-      setPigletData(response.data);
-    } else {
-      // If search query is not empty, perform search
-      const response = await axios.get(
-        `http://localhost:3000/piglet-search?search=${data}`
-      );
-      setPigletData(response.data);
+  const handleChangeRoomNumber = async (e) => {
+    const data = e.target.value;
+    setSearchQueryRoomNumber(data);
+    try {
+      if (data.trim() === "") {
+        // If search query is empty, fetch all details
+        const response = await axios.get(
+          "http://localhost:3000/piglet-details"
+        );
+        setPigletData(response.data);
+      } else {
+        // If search query is not empty, perform search
+        const response = await axios.get(
+          `http://localhost:3000/piglet-search-roomNumber?search=${data}`
+        );
+        setPigletData(response.data);
+      }
+    } catch (error) {
+      console.log("Error searching data", error);
     }
-  } catch (error) {
-    console.log("Error searching data", error);
-  }
-};
+  };
 
-
-   
+  const handleChangeWeight = async (e) => {
+    const data = e.target.value;
+    setSearchQueryWeight(data);
+    try {
+      if (data.trim() === "") {
+        // If search query is empty, fetch all details
+        const response = await axios.get(
+          "http://localhost:3000/piglet-details"
+        );
+        setPigletData(response.data);
+      } else {
+        // If search query is not empty, perform search
+        const response = await axios.get(
+          `http://localhost:3000/piglet-search-weight?search=${data}`
+        );
+        setPigletData(response.data);
+      }
+    } catch (error) {
+      console.log("Error searching data", error);
+    }
+  };
 
   // }
   return (
     <div className="piglet-detail-main">
       <div className="piglet-detail-2nd">
-        <Form inline className="piglet-detail-search">
-          <h4 style={{ fontWeight: "600" }}>All piglet details</h4>
-          <Row>
+        <Form inline className="piglet-detail-form">
+          <h4 style={{ fontWeight: "600" }}>All Piglet detail</h4>
+          <Row className="piglet-detail-row">
             <Col xs="auto" className="piglet-detail-column">
               <Form.Control
+                style={{ width: "10vw", marginLeft: "2vw" }}
                 type="text"
-                placeholder="Search"
+                placeholder="Search by id"
                 className=" mr-sm-2"
-                value={searchQuery}
+                value={searchQueryId}
                 // onChange={(e) => setSearchQuery(e.target.value)}
-                onChange={handleChange }
+                onChange={handleChangeId}
+              />
+              <Form.Control
+                style={{ width: "10vw", marginLeft: "2vw" }}
+                type="text"
+                placeholder="Search by room number"
+                className=" mr-sm-2"
+                value={searchQueryRoomNumber}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeRoomNumber}
+              />
+              <Form.Control
+                style={{ width: "10vw", marginLeft: "2vw" }}
+                type="text"
+                placeholder="Search by weight"
+                className=" mr-sm-2"
+                value={searchQueryWeight}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeWeight}
               />
             </Col>
             <Col xs="auto">
-              <Button onClick={handleSearch} type="submit">
-                Submit
-              </Button>
+              <Button type="submit">Submit</Button>
             </Col>
           </Row>
         </Form>
@@ -144,6 +186,7 @@ const handleChange = async (e) => {
               <th>Swine Fever</th>
               <th>Deworming</th>
               <th>Weight</th>
+              <th>Note</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -171,6 +214,8 @@ const handleChange = async (e) => {
                   <td>{swineFever}</td>
                   <td>{deworming}</td>
                   <td>{value.weight ? value.weight : "Null"}</td>
+                  <td>{value.note ? value.note : "Null"}</td>
+
                   <td className="boar-detail-logo">
                     <div className="delete-logo">
                       <MdDelete

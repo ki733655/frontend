@@ -13,6 +13,7 @@ const KhassiEditForm = ({ editItem, setEditItem }) => {
       FMD: editItem.FMD || "",
       Deworm: editItem.Deworm || "",
       Weight: editItem.Weight || "",
+      note: editItem.note || "",
     };
   
     const [formData, setFormData] = useState(initialFormData);
@@ -40,6 +41,7 @@ const KhassiEditForm = ({ editItem, setEditItem }) => {
         FMD: "",
         Deworm: "",
         Weight: "",
+        note: "",
       });
       // Reset editItem to null to exit edit mode
       setEditItem(null);
@@ -115,6 +117,15 @@ const KhassiEditForm = ({ editItem, setEditItem }) => {
                 id="Weight"
                 placeholder="in kgs"
                 value={formData.Weight}
+                onChange={handleChange}
+              />
+               <label className="form-label">Note</label>
+              <input
+                type="text"
+                className="form-control"
+                id="note"
+                placeholder="Enter note if any"
+                value={formData.note}
                 onChange={handleChange}
               />
 
