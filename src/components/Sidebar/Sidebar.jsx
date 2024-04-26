@@ -47,7 +47,7 @@ const Sidebar = (props) => {
           className="dashboardLink"
           id="Dashboard"
         >
-          <Link to="/" onClick={() => setName("Dashboard")}>
+          <Link to="/Dashboard" onClick={() => setName("Dashboard")}>
             <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Dashboard</h5>
           </Link>

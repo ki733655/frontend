@@ -126,30 +126,30 @@ const Employee = () => {
             <h4 style={{ fontWeight: "600" }}>All Employee Details</h4>
             <Row className="employee-detail-row">
               <Col xs="auto" className="employee-detail-column">
-                <Form.Control
-                  style={{ width: "10vw", marginLeft: "40vw" }}
+                {/* <Form.Control
+                  style={{ width: "10vw", marginLeft: "60vw", }}
                   type="text"
-                  placeholder="Search by ID"
+                  placeholder=" "
                   className=" mr-sm-2"
                   value={searchQuery.employeeId}
                   onChange={handleChangeEmployeeId}
-                />
-                <Form.Control
+                /> */}
+                {/* <Form.Control
                   style={{ width: "10vw", marginLeft: "2vw" }}
                   type="text"
-                  placeholder="Search by Name"
+                  placeholder=" "
                   className=" mr-sm-2"
                   value={searchQuery.employeeName}
                   onChange={handleChangeEmployeeName}
-                />
+                /> */}
               </Col>
               <Col xs="auto">
-               <Link to = '/employee/addemployee'>
-               <Button >
-                  Add New Employee
-                </Button>
-               </Link>
-              </Col>
+  <Link to="/employee/addemployee" style={{ width: "10vw", marginLeft: "60vw",}}>
+    <Button className="add-employee-button">
+      Add New Employee
+    </Button>
+  </Link>
+</Col>
             </Row>
           </Form>
           <Table className="employee-detail-table" responsive bordered hover>

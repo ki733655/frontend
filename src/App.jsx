@@ -33,7 +33,9 @@ function App() {
                   <div className="mainbar">
                     <Nav value={name} />
                     <Routes>
-                      <Route path="/" element={<Dashboard />} />
+                    <Route path="/" element={<Dashboard />} />
+                      <Route path="/Dashboard" element={<Dashboard />} />
+
                       <Route path="/livestock" element={<Livestock />} />
                       {/* Below is the button route */}
                       <Route path="/livestock/addboar" element={<Boar />} />

@@ -106,13 +106,17 @@ const EmployeeEditForm = ({ editItem, setEditItem }) => {
                         </div>
                         <div className="form-group">
                             <label htmlFor="dutyShift">Duty Shift</label>
-                            <input
-                                type="text"
+                            <select
                                 className="form-control"
                                 id="dutyShift"
                                 value={formData.dutyShift}
                                 onChange={handleChange}
-                            />
+                            >
+                                <option value="">Select duty shift</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                            </select>
                         </div>
                         <div className="form-group">
                             <label htmlFor="salary">Salary</label>
@@ -134,7 +138,7 @@ const EmployeeEditForm = ({ editItem, setEditItem }) => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <button type="submit" className="btn btn-primary">Save</button>
+                        <input type="submit" className="btn btn-primary" id="employee-edit-submit" value="Save" />
                     </form>
                 </div>
             </div>
