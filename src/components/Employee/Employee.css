@@ -1,0 +1,71 @@
+/* Employee.css */
+
+.employee-main {
+  padding: 2%;
+  background-color: aliceblue;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 23px;
+  margin-left: 5px;
+  margin-right: 7px;
+  margin-top: 20px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.employee-main-2nd {
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 23px;
+  margin-left: 5px;
+  margin-right: -13px;
+  margin-top: 20px;
+}
+
+.employee-detail-form thead tr th {
+  background-color: rgb(187, 221, 250);
+}
+
+.employee-detail-row {
+  align-items: center;
+}
+
+.employee-detail-column {
+  display: flex;
+}
+
+.employee-detail-column .form-control {
+  width: 100%;
+}
+
+.employee-detail-table {
+  margin-top: 20px;
+  background-color: #175ea5;
+}
+
+.employee-detail-table th,
+.employee-detail-table td {
+  text-align: center;
+  background-color: aliceblue;
+}
+
+.employee-detail-table th {
+  background-color: aliceblue;
+}
+
+.employee-detail-table tbody tr:nth-child(even) {
+  background-color: aliceblue;
+}
+
+.employee-detail-table tbody tr:hover {
+  background-color: #175ea5;
+}
+
+.submit-btn {
+  margin-top: 10px;
+}
