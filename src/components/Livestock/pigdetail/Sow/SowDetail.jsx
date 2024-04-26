@@ -16,7 +16,9 @@ const SowDetail = () => {
   const [sowData, setSowData] = useState([]);
   const [editItem, setEditItem] = useState(null); // State to hold the item being edited
   // const [editConfirm, setEditConfirm] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryId, setSearchQueryId] = useState("s-");
+  const [searchQueryRoomNumber, setSearchQueryRoomNumber] = useState("");
+  const [searchQueryWeight, setSearchQueryWeight] = useState("");
 
   // Fetching the data from the database
   useEffect(() => {
@@ -66,46 +68,67 @@ const SowDetail = () => {
   };
   //logic for handling the search field
   // Logic for handling the search field
-const handleSearch = async (e) => {
-  e.preventDefault();
-  try {
-    if (searchQuery.trim() === "") {
-      // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/sow-details");
-      setSowData(response.data);
-    } else {
-      // If search query is not empty, perform search
-      const response = await axios.get(
-        `http://localhost:3000/sow-search?search=${searchQuery}`
-      );
-      setSowData(response.data);
+
+  const handleChangeId = async (e) => {
+    const data = e.target.value;
+    setSearchQueryId(data);
+    try {
+      if (data.trim() === "s-") {
+        // If search query is empty, fetch all details
+        const response = await axios.get("http://localhost:3000/sow-details");
+        setSowData(response.data);
+      } else {
+        // If search query is not empty, perform search
+        const response = await axios.get(
+          `http://localhost:3000/sow-search-id?search=${data}`
+        );
+        setSowData(response.data);
+      }
+    } catch (error) {
+      console.log("Error searching data", error);
     }
-  } catch (error) {
-    console.log("Error searching data", error);
-  }
-};
-
-
-const handleChange = async (e) => {
-  const data = e.target.value;
-  setSearchQuery(data);
-  try {
-    if (data.trim() === "") {
-      // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/sow-details");
-      setSowData(response.data);
-    } else {
-      // If search query is not empty, perform search
-      const response = await axios.get(
-        `http://localhost:3000/sow-search?search=${data}`
-      );
-      setSowData(response.data);
+  };
+  
+  const handleChangeRoomNumber = async (e) => {
+    const data = e.target.value;
+    setSearchQueryRoomNumber(data);
+    try {
+      if (data.trim() === "") {
+        // If search query is empty, fetch all details
+        const response = await axios.get("http://localhost:3000/sow-details");
+        setSowData(response.data);
+      } else {
+        // If search query is not empty, perform search
+        const response = await axios.get(
+          `http://localhost:3000/sow-search-roomNumber?search=${data}`
+        );
+        setSowData(response.data);
+      }
+    } catch (error) {
+      console.log("Error searching data", error);
     }
-  } catch (error) {
-    console.log("Error searching data", error);
-  }
-};
-
+  };
+  
+  const handleChangeWeight = async (e) => {
+    const data = e.target.value;
+    setSearchQueryWeight(data);
+    try {
+      if (data.trim() === "") {
+        // If search query is empty, fetch all details
+        const response = await axios.get("http://localhost:3000/sow-details");
+        setSowData(response.data);
+      } else {
+        // If search query is not empty, perform search
+        const response = await axios.get(
+          `http://localhost:3000/sow-search-weight?search=${data}`
+        );
+        setSowData(response.data);
+      }
+    } catch (error) {
+      console.log("Error searching data", error);
+    }
+  };
+  
 
    
 
@@ -113,21 +136,40 @@ const handleChange = async (e) => {
   return (
     <div className="sow-detail-main">
       <div className="sow-detail-2nd">
-        <Form inline className="sow-detail-search">
-          <h4 style={{ fontWeight: "600" }}>All sow details</h4>
-          <Row>
+      <Form inline className="sow-detail-form">
+          <h4 style={{ fontWeight: "600" }}>All Sow details</h4>
+          <Row className="sow-detail-row">
             <Col xs="auto" className="sow-detail-column">
               <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
                 type="text"
-                placeholder="Search"
+                placeholder="Search by id"
                 className=" mr-sm-2"
-                value={searchQuery}
+                value={searchQueryId}
                 // onChange={(e) => setSearchQuery(e.target.value)}
-                onChange={handleChange }
+                onChange={handleChangeId }
+              />
+              <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
+                type="text"
+                placeholder="Search by room number"
+                className=" mr-sm-2"
+                value={searchQueryRoomNumber}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeRoomNumber }
+              />
+               <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
+                type="text"
+                placeholder="Search by weight"
+                className=" mr-sm-2"
+                value={searchQueryWeight}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeWeight }
               />
             </Col>
             <Col xs="auto">
-              <Button onClick={handleSearch} type="submit">
+              <Button type="submit">
                 Submit
               </Button>
             </Col>
@@ -142,6 +184,7 @@ const handleChange = async (e) => {
               <th>FMD</th>
               <th>Deworm</th>
               <th>Weight</th>
+              <th>Note</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -166,6 +209,8 @@ const handleChange = async (e) => {
                   <td>{FMD}</td>
                   <td>{Deworm}</td>
                   <td>{value.Weight ? value.Weight : "Null"}</td>
+                  <td>{value.note ? value.note : "Null"}</td>
+
                   <td className="sow-detail-logo">
                     <div className="delete-logo">
                       <MdDelete

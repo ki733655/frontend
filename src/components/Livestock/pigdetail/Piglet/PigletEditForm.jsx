@@ -150,6 +150,15 @@ const PigletEditForm = ({ editItem, setEditItem }) => {
                 value={formData.weight}
                 onChange={handleChange}
               />
+               <label className="form-label">Note</label>
+              <input
+                type="text"
+                className="form-control"
+                id="note"
+                placeholder="Enter note if any"
+                value={formData.note}
+                onChange={handleChange}
+              />
 
               <input type="submit" className="btn btn-primary" id="piglet-edit-submit" value="Save" />
             </div>

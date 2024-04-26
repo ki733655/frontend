@@ -15,7 +15,9 @@ const KhassiDetail = () => {
   const [khassiData, setKhassiData] = useState([]);
   const [editItem, setEditItem] = useState(null); // State to hold the item being edited
   // const [editConfirm, setEditConfirm] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQueryId, setSearchQueryId] = useState("k-");
+  const [searchQueryRoomNumber, setSearchQueryRoomNumber] = useState("");
+  const [searchQueryWeight, setSearchQueryWeight] = useState("");
 
   // Fetching the data from the database
   useEffect(() => {
@@ -65,29 +67,31 @@ const KhassiDetail = () => {
   };
   //logic for handling the search field
   // Logic for handling the search field
-const handleSearch = async (e) => {
-  e.preventDefault();
-  try {
-    if (searchQuery.trim() === "") {
-      // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/khassi-details");
-      setKhassiData(response.data);
-    } else {
-      // If search query is not empty, perform search
-      const response = await axios.get(
-        `http://localhost:3000/khassi-search?search=${searchQuery}`
-      );
-      setKhassiData(response.data);
+
+  const handleChangeId = async (e) => {
+    const data = e.target.value;
+    setSearchQueryId(data);
+    try {
+      if (data.trim() === "k-") {
+        // If search query is empty, fetch all details
+        const response = await axios.get("http://localhost:3000/khassi-details");
+        setKhassiData(response.data);
+      } else {
+        // If search query is not empty, perform search
+        const response = await axios.get(
+          `http://localhost:3000/khassi-search-id?search=${data}`
+        );
+        setKhassiData(response.data);
+      }
+    } catch (error) {
+      console.log("Error searching data", error);
     }
-  } catch (error) {
-    console.log("Error searching data", error);
-  }
-};
+  };
 
-
-const handleChange = async (e) => {
+  
+const handleChangeRoomNumber = async (e) => {
   const data = e.target.value;
-  setSearchQuery(data);
+  setSearchQueryRoomNumber(data);
   try {
     if (data.trim() === "") {
       // If search query is empty, fetch all details
@@ -96,7 +100,7 @@ const handleChange = async (e) => {
     } else {
       // If search query is not empty, perform search
       const response = await axios.get(
-        `http://localhost:3000/khassi-search?search=${data}`
+        `http://localhost:3000/khassi-search-roomNumber?search=${data}`
       );
       setKhassiData(response.data);
     }
@@ -106,27 +110,68 @@ const handleChange = async (e) => {
 };
 
 
+const handleChangeWeight = async (e) => {
+  const data = e.target.value;
+  setSearchQueryWeight(data);
+  try {
+    if (data.trim() === "") {
+      // If search query is empty, fetch all details
+      const response = await axios.get("http://localhost:3000/khassi-details");
+      setKhassiData(response.data);
+    } else {
+      // If search query is not empty, perform search
+      const response = await axios.get(
+        `http://localhost:3000/khassi-search-weight?search=${data}`
+      );
+      setKhassiData(response.data);
+    }
+  } catch (error) {
+    console.log("Error searching data", error);
+  }
+};
+
+
+
    
 
   // }
   return (
     <div className="khassi-detail-main">
       <div className="khassi-detail-2nd">
-        <Form inline className="khassi-detail-search">
-          <h4 style={{ fontWeight: "600" }}>All khassi details</h4>
-          <Row>
+      <Form inline className="khassi-detail-form">
+          <h4 style={{ fontWeight: "600" }}>All Khassi detail</h4>
+          <Row className="khassi-detail-row">
             <Col xs="auto" className="khassi-detail-column">
               <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
                 type="text"
-                placeholder="Search"
+                placeholder="Search by id"
                 className=" mr-sm-2"
-                value={searchQuery}
+                value={searchQueryId}
                 // onChange={(e) => setSearchQuery(e.target.value)}
-                onChange={handleChange }
+                onChange={handleChangeId }
+              />
+              <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
+                type="text"
+                placeholder="Search by room number"
+                className=" mr-sm-2"
+                value={searchQueryRoomNumber}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeRoomNumber }
+              />
+               <Form.Control
+              style={{width : "10vw", marginLeft: "2vw"}}
+                type="text"
+                placeholder="Search by weight"
+                className=" mr-sm-2"
+                value={searchQueryWeight}
+                // onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleChangeWeight }
               />
             </Col>
             <Col xs="auto">
-              <Button onClick={handleSearch} type="submit">
+              <Button type="submit">
                 Submit
               </Button>
             </Col>
@@ -141,6 +186,7 @@ const handleChange = async (e) => {
               <th>FMD</th>
               <th>Deworm</th>
               <th>Weight</th>
+              <th>Note</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -165,6 +211,7 @@ const handleChange = async (e) => {
                   <td>{FMD}</td>
                   <td>{Deworm}</td>
                   <td>{value.Weight ? value.Weight : "Null"}</td>
+                  <td>{value.note ? value.note : "Null"}</td>
                   <td className="khassi-detail-logo">
                     <div className="delete-logo">
                       <MdDelete

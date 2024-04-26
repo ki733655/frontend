@@ -10,6 +10,12 @@ const Sow = () => {
     fmdDate: '',
     dewormDate: '',
     weight: '',
+    note: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState({
+    sale : "",
+    sow: "",
   });
 
   const handleChange = (e) => {
@@ -18,6 +24,10 @@ const Sow = () => {
       ...prevData,
       [id]: value
     }));
+    setErrorMessage({
+      sale : "",
+      sow: ""
+    }); 
   };
 
   const handleSubmit = async (e) => {
@@ -37,14 +47,26 @@ const Sow = () => {
         csfDate: '',
         fmdDate: '',
         dewormDate: '',
-        weight: ''
+        weight: '',
+        note: "",
       });
       
       alert(" 😄 Data added successfully"); 
     } catch (error) {
       // Handle error if the request fails
       console.error('Error occurred:', error);
-      alert(" 😥 Something went wrong") 
+      if (error.response && error.response.status === 400) {
+        setErrorMessage({
+          sale : "This Sow's ID is already in a sale"
+        })
+      } else if(error.response && error.response.status === 401) {
+        setErrorMessage({
+          sow : "This Sow's ID is already being entered"
+        })
+      } 
+      else{
+        alert("Something went wrong")
+      }
     }
   };
 
@@ -66,6 +88,8 @@ const Sow = () => {
             value={formData.id}
             onChange={handleChange}
           />
+          {errorMessage.sale && <p className="error-message">{errorMessage.sale}</p>}
+          {errorMessage.sow && <p className="error-message">{errorMessage.sow}</p>}
 
           <label className="form-label">Room number</label>
           <input
@@ -108,6 +132,15 @@ const Sow = () => {
             id="weight"
             placeholder="in kgs"
             value={formData.weight}
+            onChange={handleChange}
+          />
+           <label className="form-label">Note</label>
+          <input 
+            type="text"
+            className="form-control"
+            id="note"
+            placeholder="Enter notes if any"
+            value={formData.note}
             onChange={handleChange}
           />
 
