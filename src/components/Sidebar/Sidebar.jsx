@@ -104,6 +104,12 @@ const Sidebar = (props) => {
           <Link to="/employee" onClick={() => setName("Employee")}>
             <BadgeIcon className="text-violet-500" style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Employee</h5>
+            <div className="dropdown">
+              <IoIosArrowDropdownCircle style={{ fontSize: "3vh" }} />
+              <div className="dropdown-content">
+                <Link to="/employee/addemployee">Add Employee</Link>
+              </div>
+            </div>
           </Link>
         </div>
       </div>
