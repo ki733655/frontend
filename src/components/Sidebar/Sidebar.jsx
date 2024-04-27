@@ -41,7 +41,7 @@ const Sidebar = (props) => {
     <div className="sidebar-main">
       <div className="sidebar-2nd">
         <div className="companyName" style={{ paddingBottom: "5vh" }}>
-          <h5 style={{ fontSize: "4vh" }}>CompanyName</h5>
+          <h5 style={{ fontSize: "4vh" }}>Swargari Farms</h5>
         </div>
         <div
           ref={dashboardRef}
@@ -49,8 +49,8 @@ const Sidebar = (props) => {
           className="dashboardLink"
           id="Dashboard"
         >
-          <Link to="/Dashboard" onClick={() => setName("Dashboard")}>
-            <SpaceDashboardIcon style={{ marginBottom: "1vh", fontSize: "4vh" }} />
+          <Link to="/Dashboard"  onClick={() => setName("Dashboard")}>
+            <SpaceDashboardIcon className="text-yellow-500" style={{ marginBottom: "1vh", fontSize: "4vh" }} />
             <h5>Dashboard</h5>
           </Link>
         </div>

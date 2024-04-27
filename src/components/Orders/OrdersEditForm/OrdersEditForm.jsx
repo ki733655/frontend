@@ -11,6 +11,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
         orderId: editItem.orderId || "",
         customerName: editItem.customerName || "",
         pigIds: editItem.pigIds || [],
+        remarks : editItem.remarks || "",
         totalWeight: editItem.totalWeight || "",
         address: editItem.address || "",
         advance: editItem.advance || "",
@@ -90,6 +91,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
             orderId: "",
             customerName: "",
             pigIds: [],
+            remarks: "",
             totalWeight: "",
             address: "",
             advance: "",
@@ -130,6 +132,7 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
                 placeholder="Enter order id"
                 value={formData.orderId}
                 onChange={handleChange}
+                readOnly
               />
 
               <label className="form-label">Customer Name</label>
@@ -152,6 +155,15 @@ const OrdersEditForm = ({ editItem, setEditItem }) => {
               options={pigOptions}
               onChange={handlePigIdChange}
               placeholder="Search and select pig IDs"
+            />
+             <label className="form-label">Remarks</label>
+            <input
+              type="text"
+              className="form-control"
+              id="remarks"
+              placeholder="You can write here !"
+              value={formData.remarks}
+              onChange={handleChange}
             />
               <label className="form-label">Enter the total weight</label>
               <input

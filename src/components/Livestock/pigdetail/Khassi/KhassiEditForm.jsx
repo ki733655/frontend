@@ -112,7 +112,7 @@ const KhassiEditForm = ({ editItem, setEditItem }) => {
               />
               <label className="form-label">Weight</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="Weight"
                 placeholder="in kgs"

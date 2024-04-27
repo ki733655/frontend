@@ -3,12 +3,17 @@ import axios from "axios";
 import { Typeahead } from "react-bootstrap-typeahead";
 import "react-bootstrap-typeahead/css/Typeahead.css";
 import "./OrdersForm.css";
+// import { v4 as uuidv4 } from 'uuid';
+const generateOrderId = () => {
+  return Math.random().toString(36).substr(2, 10);
+};
 
 const OrdersForm = () => {
   const initialForm = {
-    orderId: "",
+    orderId: generateOrderId(), // Automatically generate order ID
     customerName: "",
     pigIds: [],
+    remarks: "",
     totalWeight: "",
     address: "",
     advance: "",
@@ -17,9 +22,9 @@ const OrdersForm = () => {
     comment: "",
     deliveryDate: "",
     deliveryStatus: "pending",
-  }
-  const [formData, setFormData] = useState(initialForm);
+  };
 
+  const [formData, setFormData] = useState(initialForm);
   const [pigOptions, setPigOptions] = useState([]);
 
   useEffect(() => {
@@ -58,7 +63,6 @@ const OrdersForm = () => {
     fetchPigOptions();
   }, []);
 
-  
   const handlePigIdChange = (selectedOptions) => {
     const selectedPigIds = selectedOptions.map((option) => option.id);
     setFormData((prevData) => ({
@@ -66,7 +70,7 @@ const OrdersForm = () => {
       pigIds: selectedPigIds,
     }));
   };
-  
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -77,21 +81,22 @@ const OrdersForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await axios.post(
         "http://localhost:3000/submit-form-order",
         formData
       );
-  
+
       console.log("Form submitted successfully:", response.data);
-  
+
       // Reset form data after successful submission
       setFormData({
         ...initialForm, // Reset all form fields
-        pigIds: [], // Reset pigIds array specifically
+        orderId: generateOrderId(), // Generate new order ID
+       // Reset pigIds array specifically
       });
-  
+
       alert("Order submitted successfully!");
       window.location.reload();
     } catch (error) {
@@ -99,8 +104,6 @@ const OrdersForm = () => {
       alert("Failed to submit order. Please try again.");
     }
   };
-  
-
 
   return (
     <div className="orders-entry-form">
@@ -113,12 +116,13 @@ const OrdersForm = () => {
             <label className="form-label">Order Id</label>
             <input
               required
-              type="text number"
+              type="text"
               className="form-control"
               id="orderId"
               placeholder="Enter order id"
               value={formData.orderId}
               onChange={handleChange}
+              readOnly // Make it read-only to prevent manual editing
             />
 
             <label className="form-label">Customer Name</label>
@@ -141,6 +145,15 @@ const OrdersForm = () => {
               options={pigOptions}
               onChange={handlePigIdChange}
               placeholder="Search and select pig IDs"
+            />
+            <label className="form-label">Remarks</label>
+            <input
+              type="text"
+              className="form-control"
+              id="remarks"
+              placeholder="You can write here !"
+              value={formData.remarks}
+              onChange={handleChange}
             />
 
             <label className="form-label">Total weight</label>
@@ -185,7 +198,7 @@ const OrdersForm = () => {
 
             <label className="form-label">Phone Number</label>
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="phoneNumber"
               placeholder="Enter the phone number"
@@ -235,5 +248,6 @@ const OrdersForm = () => {
     </div>
   );
 };
-// orders form
+
+
 export default OrdersForm;
