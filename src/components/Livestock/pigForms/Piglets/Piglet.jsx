@@ -180,7 +180,7 @@ const Piglet = () => {
               />
               <label className="form-label">Weight</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="weight"
                 placeholder="in kgs"

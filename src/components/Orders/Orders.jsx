@@ -182,9 +182,11 @@ const Orders = () => {
         <Table className="orders-detail-table" responsive bordered hover>
           <thead>
             <tr>
+            <th>Action</th>
               <th>Order Id</th>
               <th>Customer Name</th>
               <th>Pig Ids</th>
+              <th>Remarks</th>
               <th>Total weight</th>
               <th>Address</th>
               <th>Advance </th>
@@ -193,7 +195,7 @@ const Orders = () => {
               <th>Commnet</th>
               <th>Delivery Date</th>
               <th>Delivery Status</th>
-              <th>Action</th>
+              
             </tr>
           </thead>
 
@@ -204,26 +206,7 @@ const Orders = () => {
             return (
               <tbody key={index}>
                 <tr>
-                  <td>{value.orderId ? value.orderId : "Null"}</td>
-                  <td>{value.customerName ? value.customerName : "Null"}</td>
-                  <td>
-                    {value.pigIds
-                      ? value.pigIds.map((pigId, index) => (
-                          <div key={index}>{pigId.trim()}</div>
-                        ))
-                      : "Null"}
-                  </td>
-                  <td>{value.totalWeight ? value.totalWeight : "Null"}</td>
-                  <td>{value.address ? value.address : "Null"}</td>
-                  <td>{value.advance ? value.advance : "Null"}</td>
-                  <td>{value.finalPayment ? value.finalPayment : "Null"}</td>
-                  <td>{value.phoneNumber ? value.phoneNumber : "Null"}</td>
-                  <td>{value.comment ? value.comment : "Null"}</td>
-                  <td>{deliveryDate}</td>
-                  <td>
-                    {value.deliveryStatus ? value.deliveryStatus : "Null"}
-                  </td>
-                  <td className="boar-detail-logo">
+                <td className="boar-detail-logo">
                     <div className="delete-logo">
                       <MdDelete
                         id="delete"
@@ -237,6 +220,26 @@ const Orders = () => {
                         onClick={() => handleEdit(value)}
                       />
                     </div>
+                  </td>
+                  <td>{value.orderId ? value.orderId : "Null"}</td>
+                  <td>{value.customerName ? value.customerName : "Null"}</td>
+                  <td>
+                    {value.pigIds
+                      ? value.pigIds.map((pigId, index) => (
+                          <div key={index}>{pigId.trim()}</div>
+                        ))
+                      : "Null"}
+                  </td>
+                  <td>{value.remarks ? value.remarks : "Null"}</td>
+                  <td>{value.totalWeight ? value.totalWeight : "Null"}</td>
+                  <td>{value.address ? value.address : "Null"}</td>
+                  <td>{value.advance ? value.advance : "Null"}</td>
+                  <td>{value.finalPayment ? value.finalPayment : "Null"}</td>
+                  <td>{value.phoneNumber ? value.phoneNumber : "Null"}</td>
+                  <td>{value.comment ? value.comment : "Null"}</td>
+                  <td>{deliveryDate}</td>
+                  <td>
+                    {value.deliveryStatus ? value.deliveryStatus : "Null"}
                   </td>
                 </tr>
               </tbody>

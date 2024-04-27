@@ -78,7 +78,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
 
               <label className="form-label">Room number</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="roomNumber"
                 placeholder="Enter room number"
@@ -112,7 +112,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
               />
               <label className="form-label">Weight</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="Weight"
                 placeholder="in kgs"

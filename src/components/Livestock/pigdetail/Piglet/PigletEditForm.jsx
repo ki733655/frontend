@@ -28,6 +28,13 @@ const PigletEditForm = ({ editItem, setEditItem }) => {
       }));
     };
 
+    const handleGenderChange = (e) => {
+      setFormData((prevData) => ({
+        ...prevData,
+        gender: e.target.value, // Update gender state when selection changes
+      }));
+    };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -107,13 +114,17 @@ const PigletEditForm = ({ editItem, setEditItem }) => {
                 onChange={handleChange}
               />
               <label className="form-label">Gender</label>
-              <input
-                type="text"
-                className="form-control"
-                id="gender"
+              <select
+                className="form-select"
+                aria-label="Default select example"
                 value={formData.gender}
-                onChange={handleChange}
-              />
+                onChange={handleGenderChange}
+              >
+                <option selected>Select from the list</option>
+                <option value="Sow">Sow</option>
+                <option value="Male">Male</option>
+                {/* <option value="Khassi">Khassi</option> */}
+              </select>
       
               <label className="form-label">Room number</label>
               <input
@@ -143,7 +154,7 @@ const PigletEditForm = ({ editItem, setEditItem }) => {
               />
               <label className="form-label">Weight</label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
                 id="weight"
                 placeholder="in kgs"
