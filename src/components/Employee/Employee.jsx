@@ -144,7 +144,7 @@ const Employee = () => {
                 /> */}
               </Col>
               <Col xs="auto">
-  <Link to="/employee/addemployee" style={{ width: "10vw", marginLeft: "60vw",}}>
+  <Link to="/employee/addemployee" style={{ width: "10vw", marginLeft: "64vw",}}>
     <Button className="add-employee-button">
       Add New Employee
     </Button>
