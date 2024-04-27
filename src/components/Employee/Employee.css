@@ -48,18 +48,19 @@
   background-color: #175ea5;
 }
 
-.employee-detail-table th,
+.employee-detail-table th
+,
 .employee-detail-table td {
   text-align: center;
-  background-color: aliceblue;
+  background-color: rgb(8, 128, 234);
 }
 
 .employee-detail-table th {
-  background-color: aliceblue;
+  background-color: rgb(19, 134, 235);
 }
 
 .employee-detail-table tbody tr:nth-child(even) {
-  background-color: aliceblue;
+  background-color: rgb(34, 128, 209);
 }
 
 .employee-detail-table tbody tr:hover {
