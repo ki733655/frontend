@@ -12,6 +12,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import OrdersEditForm from "./OrdersEditForm/OrdersEditForm";
 import { Link } from "react-router-dom";
+import * as XLSX from "xlsx";
 
 const Orders = () => {
   const [orderData, setOrderData] = useState([]);
@@ -133,6 +134,22 @@ const Orders = () => {
     }
   };
 
+  const exportToExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(orderData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Orders");
+    XLSX.writeFile(workbook, "orders.xlsx");
+  };
+
+
+  // const exportToExcel = () => {
+  //   const ws = XLSX.utils.json_to_sheet(orderData);
+  //   const wb = { Sheets: { data: ws }, SheetNames: ["data"] };
+  //   const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+  //   const data = new Blob([excelBuffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+  //   FileSaver.saveAs(data, "orders.xlsx");
+  // };
+
   // }
   return (
     <>
@@ -176,6 +193,7 @@ const Orders = () => {
                 Add new order
               </Button>
               </Link>
+              <Button onClick={exportToExcel}>Export to Excel</Button>
             </Col>
           </Row>
         </Form>
