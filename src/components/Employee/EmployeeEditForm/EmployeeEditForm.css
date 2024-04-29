@@ -10,12 +10,12 @@
 
 .employee-edit-form-container {
     padding: 50px;
-    /* padding-top: 5vh; */
+    padding-top: 5vh;
     /* border: 1px solid black; */
     /* height: 80vh; */
-    width: 33vw;
+    width: 36vw;
     position: relative;
-    top: -481px;
+    top: -595px;
     bottom: 8vh;
     /* left: 290px; */
     left: 22vw;
@@ -39,14 +39,14 @@
     background-color: #007bff;
     color: #fff;
     border: none;
-    padding: 12px 240px;
+    padding: 12px 212px;
     border-radius: 15px;
     cursor: pointer;
-    margin-top: 12px;
+    margin-top: 22px;
     /* margin-bottom: 20px; */
     box-shadow: 0 2px 4px #747070;
     /* font-size: 18px; */
-    font-weight: 600;
+    font-weight: 550;
     transition: all 0.3s ease-in-out;
 }
 

@@ -17,14 +17,14 @@
 
 .employee-main-2nd {
   padding: 20px;
-  border: 1px solid #ddd;
+  border: -6px solid #ddd;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   margin-bottom: 23px;
-  margin-left: 5px;
-  margin-right: -13px;
-  margin-top: 20px;
+  margin-left: -3px;
+  margin-right: -20px;
+  margin-top: 6px;
 }
 
 .employee-detail-form thead tr th {
