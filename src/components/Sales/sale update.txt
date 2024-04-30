@@ -17,7 +17,7 @@ const Sales = () => {
 
   useEffect(() => {
     fetchData();
-  }, [searchQuery]);
+  }, [searchQuery]); // Fetch data whenever search query changes
 
   const fetchData = async () => {
     try {
@@ -31,6 +31,7 @@ const Sales = () => {
       }
 
       const response = await axios.get(url);
+      // Filter out _id and __v fields from each object in the response data
       const filteredData = response.data.map(({ _id, __v, deliveryDate, ...rest }) => ({
         ...rest,
         deliveryDate: deliveryDate ? new Date(deliveryDate).toLocaleDateString() : "Null"
@@ -41,15 +42,15 @@ const Sales = () => {
     }
   };
 
-  const handleChangeId = (e) => {
+  const handleChangeId = async (e) => {
     setSearchQuery({ ...searchQuery, orderId: e.target.value });
   };
 
-  const handleChangeCustomerName = (e) => {
+  const handleChangeCustomerName = async (e) => {
     setSearchQuery({ ...searchQuery, customerName: e.target.value });
   };
 
-  const handleChangePhoneNumber = (e) => {
+  const handleChangePhoneNumber = async (e) => {
     setSearchQuery({ ...searchQuery, phoneNumber: e.target.value });
   };
 
@@ -65,7 +66,7 @@ const Sales = () => {
                   style={{ width: "10vw", marginLeft: "2vw" }}
                   type="text"
                   placeholder="Search by id"
-                  className="mr-sm-2"
+                  className=" mr-sm-2"
                   value={searchQuery.orderId}
                   onChange={handleChangeId}
                 />
@@ -73,7 +74,7 @@ const Sales = () => {
                   style={{ width: "10vw", marginLeft: "2vw" }}
                   type="text"
                   placeholder="Search by Customer name"
-                  className="mr-sm-2"
+                  className=" mr-sm-2"
                   value={searchQuery.customerName}
                   onChange={handleChangeCustomerName}
                 />
@@ -81,7 +82,7 @@ const Sales = () => {
                   style={{ width: "10vw", marginLeft: "2vw" }}
                   type="text"
                   placeholder="Search by Phone Number"
-                  className="mr-sm-2"
+                  className=" mr-sm-2"
                   value={searchQuery.phoneNumber}
                   onChange={handleChangePhoneNumber}
                 />
@@ -89,12 +90,12 @@ const Sales = () => {
               <Col xs="auto">
                 <Button
                   variant="success"
-                  style={{ backgroundColor: "#78ccf0", color: "#FFFFFF" }}
+                  style={{ backgroundColor: "#28a745", color: "#000000" }}
                 >
                   <CSVLink
                     data={orderData}
                     filename={"sales_data.csv"}
-                    style={{ color: "#FFFFFF" }}
+                    style={{ color: "#000000" }}
                   >
                     Export to Excel
                   </CSVLink>
