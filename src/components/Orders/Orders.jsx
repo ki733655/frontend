@@ -184,6 +184,7 @@ const Orders = () => {
             <tr>
             <th>Action</th>
               <th>Order Id</th>
+              <th>Delivery Status</th>
               <th>Customer Name</th>
               <th>Pig Ids</th>
               <th>Remarks</th>
@@ -194,7 +195,6 @@ const Orders = () => {
               <th>Phone Number</th>
               <th>Commnet</th>
               <th>Delivery Date</th>
-              <th>Delivery Status</th>
               
             </tr>
           </thead>
@@ -222,6 +222,9 @@ const Orders = () => {
                     </div>
                   </td>
                   <td>{value.orderId ? value.orderId : "Null"}</td>
+                  <td style={{ color: value.deliveryStatus === "pending" ? "green" : "red"}}>
+                    {value.deliveryStatus ? value.deliveryStatus : "Null"}
+                  </td>
                   <td>{value.customerName ? value.customerName : "Null"}</td>
                   <td>
                     {value.pigIds
@@ -238,9 +241,7 @@ const Orders = () => {
                   <td>{value.phoneNumber ? value.phoneNumber : "Null"}</td>
                   <td>{value.comment ? value.comment : "Null"}</td>
                   <td>{deliveryDate}</td>
-                  <td>
-                    {value.deliveryStatus ? value.deliveryStatus : "Null"}
-                  </td>
+                 
                 </tr>
               </tbody>
             );

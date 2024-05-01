@@ -7,7 +7,7 @@ const Nav = () => {
     <>
       <div className="nav-container">
         <div className="nav-text">
-          <h3>{data}</h3>
+          <h3 style={{fontSize: "4vh"}}>{data}</h3>
         </div>
         <div className="nav-user">
           <li>

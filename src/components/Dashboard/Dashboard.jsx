@@ -47,10 +47,16 @@ const Dashboard = () => {
         setKhassiCount(khassidata.data.count);
         setPigletCount(pigletdata.data.count);
 
-        const barresponse = await axios.get(
-          "http://localhost:3000/sales-by-month"
-        );
-        setSalesData(barresponse.data);
+        const barData = await axios.get("http://localhost:3000/add-bar-data")
+
+        if(barData){
+          const barresponse = await axios.get(
+            "http://localhost:3000/sales-by-month"
+          );
+          setSalesData(barresponse.data);
+        }
+
+       
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -182,13 +188,13 @@ const Dashboard = () => {
       <div className="dash-top">
         <div className="box">
           <div className="dash-sales">
-            <h4>
+            <h4 style={{fontSize : "4vh", marginBottom: "2vh"}}>
               Total <br /> Sales
             </h4>
             <h3 style={{ fontWeight: "700" }}>
-              <FaRupeeSign />
+              <FaRupeeSign style={{fontSize: "4vh"}} />
               <span
-                style={{ position: "relative", bottom: "5.5vh", left: "2vw" }}
+                style={{ position: "relative", bottom: "5.5vh", left: "2vw", fontSize: "5vh" }}
               >
                 {saleCount
                   ? saleCount.totalPayment.toLocaleString("en-IN")
@@ -202,8 +208,8 @@ const Dashboard = () => {
         </div>
         <div className="box">
           <div className="dash-pig">
-            <h4>Total Pigs</h4>
-            <h3 style={{ fontWeight: "700" }}>
+            <h4 style={{fontSize : "4vh"}}>Total Pigs</h4>
+            <h3 style={{ fontWeight: "700", fontSize : "5vh" }}>
               {pigCount !== null ? pigCount : "Loading..."}
             </h3>
           </div>
@@ -213,8 +219,8 @@ const Dashboard = () => {
         </div>
         <div className="box">
           <div className="dash-pig">
-            <h4>Pending orders</h4>
-            <h3 style={{ fontWeight: "700" }}>
+            <h4 style={{fontSize : "4vh"}}>Pending orders</h4>
+            <h3 style={{ fontWeight: "700",fontSize : "5vh" }}>
               {orderCount ? orderCount : "Loading..."}
             </h3>
           </div>
@@ -226,8 +232,8 @@ const Dashboard = () => {
         </div>
         <div className="box">
           <div className="dash-employee">
-            <h4>Total Employees</h4>
-            <h3 style={{ fontWeight: "700" }}>
+            <h4 style={{fontSize : "4vh"}}>Total Employees</h4>
+            <h3 style={{ fontWeight: "700",fontSize : "5vh" }}>
               {employeeCount ? employeeCount : "Loading..."}
             </h3>
           </div>
