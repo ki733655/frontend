@@ -1,45 +1,188 @@
+import React, { useEffect, useRef, useState } from "react";
+import Chart from "chart.js/auto";
 import "./Dashboard.css";
-import { LineChart } from "@mui/x-charts/LineChart";
+import { FaRupeeSign } from "react-icons/fa";
+import Pig from "../../assets/Pig.png";
+import { FcSalesPerformance } from "react-icons/fc";
+import { MdOutlinePendingActions } from "react-icons/md";
+import BadgeIcon from '@mui/icons-material/Badge';
+import axios from "axios";
 
 const Dashboard = () => {
-  const uData = [4000, 3000, 2000, 2780, 1890, 2390, 3490];
-  const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-  const xLabels = [
-    "Page A",
-    "Page B",
-    "Page C",
-    "Page D",
-    "Page E",
-    "Page F",
-    "Page G",
-  ];
+  const chartRef = useRef(null);
+  const pieChartRef = useRef(null);
+  const [saleCount, setSaleCount] = useState(null);
+  const [pigCount, setPigCount] = useState(null);
+  const [orderCount, setOrderCount] = useState(null);
+  const [employeeCount, setEmployeeCount] = useState(null);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      const saleresponse = await axios.get("http://localhost:3000/sale-count");
+      setSaleCount(saleresponse.data);
+      const pigresponse = await axios.get("http://localhost:3000/pig-count");
+      setPigCount(pigresponse.data.totalCount)
+      const orderresponse = await axios.get("http://localhost:3000/order-count");
+      setOrderCount(orderresponse.data.orderCount)
+      const employeeresponse = await axios.get("http://localhost:3000/employee-count");
+      setEmployeeCount(employeeresponse.data.employeeCount)
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (chartRef.current && pieChartRef.current && saleCount !== null) {
+      const ctx = chartRef.current.getContext("2d");
+
+      // Destroy existing chart instance
+      if (chartRef.current.chartInstance) {
+        chartRef.current.chartInstance.destroy();
+      }
+
+      // Create new bar chart instance
+      chartRef.current.chartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Label 1", "Label 2", "Label 3"], // Replace with your data labels
+          datasets: [{
+            label: "Data",
+            data: [10, 20, 30], // Replace with your data values
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(54, 162, 235, 0.6)",
+              "rgba(255, 206, 86, 0.6)"
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)"
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: {
+                color: "rgba(0, 0, 0, 0.1)"
+              },
+              ticks: {
+                font: {
+                  size: 14
+                }
+              }
+            },
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                font: {
+                  size: 14
+                }
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }
+      });
+
+      const pieCtx = pieChartRef.current.getContext("2d");
+
+      // Destroy existing pie chart instance
+      if (pieChartRef.current.chartInstance) {
+        pieChartRef.current.chartInstance.destroy();
+      }
+
+      // Create new pie chart instance
+      pieChartRef.current.chartInstance = new Chart(pieCtx, {
+        type: "pie",
+        data: {
+          labels: ["Label 1", "Label 2", "Label 3"], // Replace with your data labels
+          datasets: [{
+            label: "Data",
+            data: [30, 40, 30], // Replace with your data values
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.6)",
+              "rgba(54, 162, 235, 0.6)",
+              "rgba(255, 206, 86, 0.6)"
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)"
+            ],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }
+      });
+    }
+  }, []);
 
   return (
     <>
       <div className="dash-main">
         <div className="dash-top">
-          <div className="dash-pigs">
-            <h5 style={{ color: "black", fontWeight: "700" }}>Total pigs</h5>
-            <h5 style={{ color: "orange" }}>12,890</h5>
+          <div className="box">
+            <div className="dash-sales">
+              <h4>Total <br /> Sales</h4>
+              <h3 style={{ fontWeight: "700" }}>
+                <FaRupeeSign style={{display : "inline"}}/> {saleCount ? saleCount.totalPayment : "Loading..."}
+              </h3>
+            </div>
+            <div className="dash-sales-logo">
+              <FcSalesPerformance style={{ fontSize: "8vh" }} />
+            </div>
           </div>
-          <div className="dash-orders">
-            <h5 style={{ color: "black", fontWeight: "700" }}>Total orders</h5>
-            <h5 style={{ color: "orange" }}>456</h5>
+          <div className="box">
+            <div className="dash-pig">
+              <h4>Total Pigs</h4>
+              <h3 style={{ fontWeight: "700" }}>{pigCount !== null ? pigCount : "Loading..."}</h3>
+            </div>
+            <div className="dash-pig-logo">
+              <img src={Pig} alt="" style={{ height: "12vh" }} />
+            </div>
           </div>
-          <div className="dash-sales">
-            <h5 style={{ color: "black", fontWeight: "700" }}>Total sales</h5>
-            <h5 style={{ color: "orange" }}>1325</h5>
+          <div className="box">
+            <div className="dash-pig">
+              <h4>Pending orders</h4>
+              <h3 style={{ fontWeight: "700" }}>{orderCount ? orderCount : "Loading..."}</h3>
+            </div>
+            <div className="dash-orders-logo">
+              <MdOutlinePendingActions style={{ fontSize: "8vh", color: "#f02e3e" }} />
+            </div>
+          </div>
+          <div className="box">
+            <div className="dash-employee">
+              <h4>Total Employees</h4>
+              <h3 style={{ fontWeight: "700" }}>{employeeCount ? employeeCount : "Loading..."}</h3>
+            </div>
+            <div className="dash-employee-logo">
+              <BadgeIcon style={{ fontSize: "8vh", color: "blue" }} />
+            </div>
           </div>
         </div>
-        <LineChart
-          width={500}
-          height={300}
-          series={[
-            { data: pData, label: "pigs" },
-            // { data: uData, label: "uv" },
-          ]}
-          xAxis={[{ scaleType: "point", data: xLabels }]}
-        />
+        <div className="dash-bottom">
+          <div className="bar">
+            <canvas ref={chartRef}></canvas>
+          </div>
+          <div className="pie">
+            <canvas ref={pieChartRef}></canvas>
+          </div>
+        </div>
       </div>
     </>
   );
