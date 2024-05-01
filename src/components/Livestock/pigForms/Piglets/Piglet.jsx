@@ -19,20 +19,43 @@ const Piglet = () => {
   const [errorMessage, setErrorMessage] = useState({
     sale: "",
     piglet: "",
+    weight: "",
   });
 
   //handleChange logic
   const handleChange = (e) => {
     const { id, value } = e.target;
+  
+    // Validate weight field to prevent negative values and special characters
+    if (id === 'weight') {
+      if (!/^\d*\.?\d*$/.test(value)) {
+        setErrorMessage({
+          ...errorMessage,
+          weight: "Weight must be a numeric value"
+        });
+        return;
+      }
+      if (parseFloat(value) < 0) {
+        setErrorMessage({
+          ...errorMessage,
+          weight: "Weight cannot be negative"
+        });
+        return;
+      }
+    }
+  
     setFormData((prevData) => ({
       ...prevData,
-      [id]: value,
+      [id]: value
     }));
+  
     setErrorMessage({
-      sale: "",
-      piglet: "",
-    });
+      sale : "",
+      sow: "",
+      weight: "",
+    }); 
   };
+
 
   //handle the option data value separately
   const handleGenderChange = (e) => {
@@ -187,6 +210,7 @@ const Piglet = () => {
                 value={formData.weight}
                 onChange={handleChange}
               />
+              {errorMessage.weight && <p className="error-message">{errorMessage.weight}</p>}
               <label className="form-label">Note</label>
               <input
                 type="text"
