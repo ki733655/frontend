@@ -34,7 +34,11 @@ function App() {
                     <Nav value={name} />
                     <Routes>
                     <Route path="/" element={<Dashboard />} />
+<<<<<<< HEAD
                       {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
+=======
+                      <Route path="/" element={<Dashboard />} />
+>>>>>>> 510d4a0b3c74e7d4e0010c6cd0dc58523faea16f
 
                       <Route path="/livestock" element={<Livestock />} />
                       {/* Below is the button route */}
