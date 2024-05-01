@@ -175,7 +175,7 @@ const Dashboard = () => {
         },
       });
     }
-  }, [salesData]);
+  }, [salesData, boarCount, khassiCount, pigletCount, sowCount]);
 
   return (
     <div className="dash-main">
