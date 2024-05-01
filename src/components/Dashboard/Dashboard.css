@@ -1,45 +1,56 @@
 .dash-main{
-    background-color: aliceblue;
-    height: 100%;
+    background-color: rgb(247, 248, 249);
+    height: 100vh;
+    /* border: 1px solid black; */
 }
 
 .dash-top{
-    height: 20vh;
+    /* border: 1px solid black; */
+    height: 30vh;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.dash-pigs{
-    /* border:  1px solid black; */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
-    height: 13vh;
-    width: 14vw;
-    border-radius: 1vh;
-    text-align: center;
-    padding: 1vh;
+.box{
+    height: 22vh;
+    width: 15vw;
+    /* border: 1px solid black; */
+    display: flex;
+    padding: 2vh;
+    border-radius: 2vh;
     background-color: white;
+  /* box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15); */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+
+
 }
-.dash-orders{
-    /* border:  1px solid black; */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+.dash-bottom{
+    display: flex;
+    width: 100%;
+    margin-top: 1.5vh;
+    padding: 0 3vw
+}
 
-    height: 13vh;
-    width: 14vw;
-    border-radius: 1vh;
-    text-align: center;
-    padding: 1vh;
+.bar{
+    /* border: 1px solid black; */
+    height: 56vh;
+    width: 50vw;
+    padding: 4vh;
     background-color: white;
+    border-radius: 2vh;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
 
-}.dash-sales{
-    /* border:  1px solid black; */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
-
-    height: 13vh;
-    width: 14vw;
-    border-radius: 1vh;
-    text-align: center;
-    padding: 1vh;
+}
+.pie{
+    margin-left: 2vw;
+    border-radius: 2vh;
+    /* border: 1px solid black; */
+    height: 56vh;
+    width: 24vw ;
+    padding: 4vh;
     background-color: white;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
 
 }
