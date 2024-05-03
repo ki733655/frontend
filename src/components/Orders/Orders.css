@@ -1,7 +1,9 @@
 .orders-main{
     /* border: 1px soild black; */
     padding: 2%;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
+    background-color: rgb(247, 248, 249);
+   
 }
 
 .orders-main-2nd{
@@ -28,7 +30,7 @@
 
 .orders-detail-row{
     /* border: 1px solid black; */
-    width: 50vw;
+    width: 62vw;
     display: flex;
     justify-content: space-between;
 }

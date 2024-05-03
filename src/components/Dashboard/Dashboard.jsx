@@ -7,6 +7,7 @@ import { FcSalesPerformance } from "react-icons/fc";
 import { MdOutlinePendingActions } from "react-icons/md";
 import BadgeIcon from "@mui/icons-material/Badge";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
   const chartRef = useRef(null);
@@ -35,8 +36,6 @@ const Dashboard = () => {
             axios.get("http://localhost:3000/sow-count"),
             axios.get("http://localhost:3000/khassi-count"),
             axios.get("http://localhost:3000/piglet-count"),
-
-
           ]);
         setSaleCount(saleresponse.data);
         setPigCount(pigresponse.data.totalCount);
@@ -55,8 +54,6 @@ const Dashboard = () => {
           );
           setSalesData(barresponse.data);
         }
-
-       
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -189,10 +186,13 @@ const Dashboard = () => {
         <div className="box">
           <div className="dash-sales">
             <h4 style={{fontSize : "4vh", marginBottom: "2vh"}}>
+              <Link className="link text-blue-500 hover:text-blue-300" to= "sales">
               Total <br /> Sales
+              </Link>
             </h4>
             <h3 style={{ fontWeight: "700" }}>
               <FaRupeeSign style={{fontSize: "4vh"}} />
+              <Link className="link hover:text-blue-400" to= "/sales">
               <span
                 style={{ position: "relative", bottom: "5.5vh", left: "2vw", fontSize: "5vh" }}
               >
@@ -200,6 +200,8 @@ const Dashboard = () => {
                   ? saleCount.totalPayment.toLocaleString("en-IN")
                   : "Loading..."}
               </span>
+              </Link>
+             
             </h3>
           </div>
           <div className="dash-sales-logo">
@@ -208,10 +210,12 @@ const Dashboard = () => {
         </div>
         <div className="box">
           <div className="dash-pig">
-            <h4 style={{fontSize : "4vh"}}>Total Pigs</h4>
-            <h3 style={{ fontWeight: "700", fontSize : "5vh" }}>
+            <Link className="link" to= "/livestock">
+            <h4 className="text-[#34eb3d] hover:text-green-300" style={{fontSize : "4vh"}}>Total Pigs</h4>
+            <h3 className="text-[#34eb3d] hover:text-green-300" style={{ fontWeight: "700", fontSize : "5vh"}}>
               {pigCount !== null ? pigCount : "Loading..."}
             </h3>
+            </Link>
           </div>
           <div className="dash-pig-logo">
             <img src={Pig} alt="" style={{ height: "12vh" }} />
@@ -219,10 +223,12 @@ const Dashboard = () => {
         </div>
         <div className="box">
           <div className="dash-pig">
-            <h4 style={{fontSize : "4vh"}}>Pending orders</h4>
-            <h3 style={{ fontWeight: "700",fontSize : "5vh" }}>
+            <Link className="link" to= "/order">
+            <h4 className="text-red-500 hover:text-red-300" style={{fontSize : "4vh"}}>Pending orders</h4>
+            <h3 className="text-red-500 hover:text-red-300" style={{ fontWeight: "700",fontSize : "5vh" }}>
               {orderCount ? orderCount : "Loading..."}
             </h3>
+            </Link>
           </div>
           <div className="dash-orders-logo">
             <MdOutlinePendingActions
@@ -232,10 +238,12 @@ const Dashboard = () => {
         </div>
         <div className="box">
           <div className="dash-employee">
-            <h4 style={{fontSize : "4vh"}}>Total Employees</h4>
-            <h3 style={{ fontWeight: "700",fontSize : "5vh" }}>
+            <Link className="link" to="/employee">
+            <h4 className="text-blue-500 hover:text-blue-300" style={{fontSize : "4vh"}}>Total Employees</h4>
+            <h3 className="text-blue-500 hover:text-blue-300" style={{ fontWeight: "700",fontSize : "5vh" }}>
               {employeeCount ? employeeCount : "Loading..."}
             </h3>
+            </Link>
           </div>
           <div className="dash-employee-logo">
             <BadgeIcon style={{ fontSize: "8vh", color: "blue" }} />

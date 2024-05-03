@@ -19,6 +19,7 @@ const Orders = () => {
     orderId: "",
     customerName: "",
     phoneNumber: "",
+    deliveryStatus: "",
   });
   const [editItem, setEditItem] = useState(null); // State to hold the item being edited
   // const [editConfirm, setEditConfirm] = useState(false)
@@ -133,6 +134,25 @@ const Orders = () => {
     }
   };
 
+  const handleChangeDeliveryStatus = async(e) => {
+    const data = e.target.value;
+    if(data == "all"){
+      const response = await axios.get("http://localhost:3000/order-details");
+      setOrderData(response.data);
+    }
+    console.log(data)
+    setSearchQuery({deliveryStatus : data});
+    try{
+      const response = await axios.get(
+        `http://localhost:3000/order-search-deliveryStatus?search=${data}`
+      );
+      setOrderData(response.data);
+    }
+    catch(error){
+      console.log("Error searching data", error)
+    }
+  }
+
   // }
   return (
     <>
@@ -142,6 +162,17 @@ const Orders = () => {
           <h4 style={{ fontWeight: "600" }}>All order detail</h4>
           <Row className="orders-detail-row">
             <Col xs="auto" className="orders-detail-column">
+              <select 
+              name="deliveryStatus" 
+              id="deliveryStatus"
+              onChange={handleChangeDeliveryStatus}
+              className="p-2"
+              >
+               <option selected>Select delivery status</option>
+                <option value="pending">pending</option>
+                <option value="delivered">delivered</option>
+                <option value="all">All</option>
+              </select>
               <Form.Control
                 style={{ width: "10vw", marginLeft: "2vw" }}
                 type="text"
