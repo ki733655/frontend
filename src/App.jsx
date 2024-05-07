@@ -1,4 +1,6 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// App.js
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
@@ -11,7 +13,6 @@ import Nav from "./components/Nav/Nav";
 import Boar from "./components/Livestock/pigForms/Boar/Boar";
 import Sow from "./components/Livestock/pigForms/Sow/Sow";
 import Khassi from "./components/Livestock/pigForms/Khassi/Khassi";
-import { useState } from "react"; // Import useEffect
 import BoarDetail from "./components/Livestock/pigdetail/Boar/BoarDetail";
 import SowDetail from "./components/Livestock/pigdetail/Sow/SowDetail";
 import PigletDetail from "./components/Livestock/pigdetail/Piglet/PigletDetail";
@@ -21,68 +22,57 @@ import Piglet from "./components/Livestock/pigForms/Piglets/Piglet";
 import OrdersForm from "./components/Orders/OrdersForm/OrdersForm";
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(false);
   const [name, setName] = useState("Dashboard");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    setAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setAuthenticated(false);
+  };
+
   return (
-    <>
-      <BrowserRouter>
+    <BrowserRouter>
+      {!authenticated ? (
+        <Login handleLogin={handleLogin} />
+      ) : (
         <div className="main">
-                <Login />
-                  <div className="sidebar">
-                    <Sidebar value={setName} name={name} />
-                  </div>
-                  <div className="mainbar">
-                    <Nav value={name} />
-                    <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                      {/* <Route path="/Dashboard" element={<Dashboard />} /> */}
-
-                      <Route path="/livestock" element={<Livestock />} />
-                      {/* Below is the button route */}
-                      <Route path="/livestock/addboar" element={<Boar />} />
-                      <Route path="/livestock/addsow" element={<Sow />} />
-                      <Route
-                        path="/livestock/addpiglets"
-                        element={<Piglet/>}
-                      />
-                      <Route
-                        path="/livestock/addkhassi"
-                        element={<Khassi />}
-                      />
-                      {/* Below is the route of display pig details */}
-                      <Route
-                        path="/livestock/totalboar"
-                        element={<BoarDetail />}
-                      />
-                      <Route
-                        path="/livestock/totalsow"
-                        element={<SowDetail />}
-                      />
-                      <Route
-                        path="/livestock/totalpiglet"
-                        element={<PigletDetail />}
-                      />
-                      <Route
-                        path="/livestock/totalkhassi"
-                        element={<KhassiDetail />}
-                      />
-                    {/* {Below is the all orders routes} */}
-                      <Route path="/order" element={<Orders />} />
-                      <Route path="/order/addorder" element={<OrdersForm />} />
-
-
-                      <Route path="/sales" element={<Sales />} />
-
-                      {/* {Below is the all employee routes} */}
-                      <Route path="/employee" element={<Employee />} />
-                      <Route
-                        path="/employee/addemployee"
-                        element={<EmployeeForm />}
-                      />
-                    </Routes>
-                  </div>
+          <div className="sidebar">
+            <Sidebar value={setName} />
+          </div>
+          <div className="mainbar">
+            <Nav handleLogout={handleLogout} />
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/livestock" element={<Livestock />} />
+              <Route path="/livestock/addboar" element={<Boar />} />
+              <Route path="/livestock/addsow" element={<Sow />} />
+              <Route path="/livestock/addpiglets" element={<Piglet />} />
+              <Route path="/livestock/addkhassi" element={<Khassi />} />
+              <Route path="/livestock/totalboar" element={<BoarDetail />} />
+              <Route path="/livestock/totalsow" element={<SowDetail />} />
+              <Route path="/livestock/totalpiglet" element={<PigletDetail />} />
+              <Route path="/livestock/totalkhassi" element={<KhassiDetail />} />
+              <Route path="order/" element={<Orders />} />
+              <Route path="order/addorder" element={<OrdersForm />} />
+              <Route path="/sales" element={<Sales />} />
+              <Route path="employee/" element={<Employee />} />
+              <Route path="employee/addemployee" element={<EmployeeForm />} />
+            </Routes>
+          </div>
         </div>
-      </BrowserRouter>
-    </>
+      )}
+    </BrowserRouter>
   );
 }
 
