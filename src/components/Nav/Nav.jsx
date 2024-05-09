@@ -7,7 +7,7 @@ const Nav = ({handleLogout}) => {
     <>
       <div className="nav-container">
         <div className="nav-text">
-          <h3 style={{fontSize: "4vh"}}>{data ? data : "Dashboard"}</h3>
+          <h3 style={{fontSize: "4vh",color:"white",fontFamily:"DM Sans"}}>{data}</h3>
         </div>
         <div className="nav-user">
           <li onClick={() => handleLogout()}>

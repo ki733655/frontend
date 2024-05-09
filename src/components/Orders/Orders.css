@@ -3,7 +3,12 @@
     padding: 2%;
     /* background-color: aliceblue; */
     background-color: rgb(247, 248, 249);
+    
    
+}
+
+.orders-main ::-webkit-scrollbar{
+    display: none;
 }
 
 .orders-main-2nd{

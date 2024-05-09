@@ -5,10 +5,16 @@
   position: sticky;
   top: 0;
   z-index: 3;
-  /* background-color: white; */
-  background-color: rgb(159, 159, 228);
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);  */
-  /* box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15); */
+
+  background: hsla(175, 81%, 70%, 1);
+
+  background: linear-gradient(135deg, hsla(175, 81%, 70%, 1) 20%, hsla(225, 65%, 49%, 1) 88%);
+  
+  background: -moz-linear-gradient(135deg, hsla(175, 81%, 70%, 1) 20%, hsla(225, 65%, 49%, 1) 88%);
+  
+  background: -webkit-linear-gradient(135deg, hsla(175, 81%, 70%, 1) 20%, hsla(225, 65%, 49%, 1) 88%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#76F1E7", endColorstr="#2C55CE", GradientType=1 );
 
   display: flex;
   justify-content: space-between;

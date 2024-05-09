@@ -185,68 +185,68 @@ const Dashboard = () => {
       <div className="dash-top">
         <div className="box">
           <div className="dash-sales">
-            <h4 style={{fontSize : "4vh", marginBottom: "2vh"}}>
+            <h4 style={{fontSize : "4vh", marginBottom: "7vh",fontFamily:"Roboto Slab"}}>
               <Link className="link text-blue-500 hover:text-blue-300" to= "sales">
-              Total <br /> Sales
+              Total Sales
               </Link>
             </h4>
             <h3 style={{ fontWeight: "700" }}>
               <FaRupeeSign style={{fontSize: "4vh"}} />
               <Link className="link hover:text-blue-400" to= "/sales">
               <span
-                style={{ position: "relative", bottom: "5.5vh", left: "2vw", fontSize: "5vh" }}
+                style={{ position: "relative", bottom: "4.5vh", left: "2vw", fontSize: "4vh" }}
               >
                 {saleCount
                   ? saleCount.totalPayment.toLocaleString("en-IN")
-                  : "Loading..."}
+                  : "..."}
               </span>
               </Link>
              
             </h3>
           </div>
           <div className="dash-sales-logo">
-            <FcSalesPerformance style={{ fontSize: "8vh" }} />
+            <FcSalesPerformance style={{ fontSize: "7.5vh",position:"relative",right:"0vw" }} />
           </div>
         </div>
         <div className="box">
           <div className="dash-pig">
             <Link className="link" to= "/livestock">
-            <h4 className="text-[#34eb3d] hover:text-green-300" style={{fontSize : "4vh"}}>Total Pigs</h4>
-            <h3 className="text-[#34eb3d] hover:text-green-300" style={{ fontWeight: "700", fontSize : "5vh"}}>
-              {pigCount !== null ? pigCount : "Loading..."}
+            <h4 className="text-[#34eb3d] hover:text-green-300" style={{fontSize : "4vh",marginBottom:"3vw",fontFamily:"Roboto Slab"}}>Total Pigs</h4>
+            <h3 className="text-[#34eb3d] hover:text-green-300" style={{ fontWeight: "700", fontSize : "4.5vh"}}>
+              {pigCount !== null ? pigCount : "..."}
             </h3>
             </Link>
           </div>
           <div className="dash-pig-logo">
-            <img src={Pig} alt="" style={{ height: "12vh" }} />
+            <img src={Pig} alt="" style={{ height: "12vh",position:"relative",right:"-2vw",top:"-1.1vw" }} />
           </div>
         </div>
         <div className="box">
           <div className="dash-pig">
             <Link className="link" to= "/order">
-            <h4 className="text-red-500 hover:text-red-300" style={{fontSize : "4vh"}}>Pending orders</h4>
-            <h3 className="text-red-500 hover:text-red-300" style={{ fontWeight: "700",fontSize : "5vh" }}>
-              {orderCount ? orderCount : "Loading..."}
+            <h4 className="text-red-500 hover:text-red-300" style={{fontSize : "4vh",fontFamily:"Roboto Slab",marginBottom:"3vw"}}>Pending orders</h4>
+            <h3 className="text-red-500 hover:text-red-300" style={{ fontWeight: "700",fontSize : "4.5vh" }}>
+              {orderCount ? orderCount : "..."}
             </h3>
             </Link>
           </div>
           <div className="dash-orders-logo">
             <MdOutlinePendingActions
-              style={{ fontSize: "8vh", color: "#f02e3e" }}
+              style={{ fontSize: "7vh", color: "#f02e3e",position:"relative",right:"-1vw",top:"auto"}}
             />
           </div>
         </div>
         <div className="box">
           <div className="dash-employee">
             <Link className="link" to="/employee">
-            <h4 className="text-blue-500 hover:text-blue-300" style={{fontSize : "4vh"}}>Total Employees</h4>
-            <h3 className="text-blue-500 hover:text-blue-300" style={{ fontWeight: "700",fontSize : "5vh" }}>
-              {employeeCount ? employeeCount : "Loading..."}
+            <h4 className="text-blue-500 hover:text-blue-300" style={{fontSize : "4vh",marginBottom:"3vw",fontFamily:"Roboto Slab"}}>Employees</h4>
+            <h3 className="text-blue-500 hover:text-blue-300" style={{ fontWeight: "700",fontSize : "4.2vh" }}>
+              {employeeCount ? employeeCount : "..."}
             </h3>
             </Link>
           </div>
           <div className="dash-employee-logo">
-            <BadgeIcon style={{ fontSize: "8vh", color: "blue" }} />
+            <BadgeIcon style={{ fontSize: "8vh", color: "blue",position:"relative",right:"-2.1vw",top:"-0.6vw"}} />
           </div>
         </div>
       </div>
