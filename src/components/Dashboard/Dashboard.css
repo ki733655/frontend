@@ -1,6 +1,6 @@
 .dash-main{
-    background-color:aliceblue;
-    height: auto;
+    background-color: rgb(247, 248, 249);
+    height: 100vh;
     /* border: 1px solid black; */
 }
 
@@ -11,12 +11,11 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    
 }
 
 .box{
-    height: 23vh;
-    width: 18vw;
+    height: 22vh;
+    width: 15vw;
     /* border: 1px solid black; */
     display: flex;
     padding: 2vh;
@@ -24,14 +23,24 @@
     background-color: white;
   /* box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15); */
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+}
 
-
+.box-sale{
+    height: 22vh;
+    width: 15vw;
+    /* border: 1px solid black; */
+    /* display: flex; */
+    padding: 2vh;
+    border-radius: 2vh;
+    background-color: white;
+  /* box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.15); */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 .dash-bottom{
     display: flex;
     width: 100%;
-    margin-top: 2.5vh;
-    padding: 0px 2vw
+    margin-top: 1.5vh;
+    padding: 0 3vw
 }
 
 .bar{
@@ -41,24 +50,21 @@
     padding: 4vh;
     background-color: white;
     border-radius: 2vh;
-    box-shadow: 0px 12px 50px 15px rgba(178,178,178);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
 
 }
 .pie{
-    margin-left: 4vw;
+    margin-left: 2vw;
     border-radius: 2vh;
     /* border: 1px solid black; */
     height: 56vh;
     width: 24vw ;
     padding: 4vh;
     background-color: white;
-    box-shadow: 0px 12px 50px 15px rgba(178,178,178);
-    /* box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08); */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
 
 }
 
 .link{
     text-decoration: none;
 }
-
-
