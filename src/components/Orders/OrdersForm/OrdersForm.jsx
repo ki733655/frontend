@@ -26,6 +26,9 @@ const OrdersForm = () => {
 
   const [formData, setFormData] = useState(initialForm);
   const [pigOptions, setPigOptions] = useState([]);
+  const [errorMessage, setErrorMessage] = useState({
+    totalWeight: "", // Added weight error message state
+  });
 
   useEffect(() => {
     const fetchPigOptions = async () => {
@@ -73,10 +76,32 @@ const OrdersForm = () => {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
+
+    if (id === 'totalWeight') {
+      if (!/^\d*\.?\d*$/.test(value)) {
+        setErrorMessage({
+          ...errorMessage,
+          totalWeight: "Weight must be a numeric value"
+        });
+        return;
+      }
+      if (parseFloat(value) < 0) {
+        setErrorMessage({
+          ...errorMessage,
+          totalWeight: "Weight cannot be negative"
+        });
+        return;
+      }
+    }
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
     }));
+    
+    setErrorMessage({
+      totalWeight: "", // Reset weight error message
+    });
+
   };
 
   const handleSubmit = async (e) => {
@@ -158,13 +183,14 @@ const OrdersForm = () => {
 
             <label className="form-label">Total weight</label>
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="totalWeight"
               placeholder="Total weight"
               value={formData.totalWeight}
               onChange={handleChange}
             />
+            {errorMessage.totalWeight && <p className="error-message">{errorMessage.totalWeight}</p>}
 
             <label className="form-label">Address</label>
             <input

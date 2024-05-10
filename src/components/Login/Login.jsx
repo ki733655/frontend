@@ -32,12 +32,12 @@ const Login = ({ handleLogin }) => {
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Login to your account</h2>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+      <div className="mt-8 w-[27vw] mx-auto">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           {error && <div className="text-red-600 text-center mb-4">{error}</div>}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
                 Username
               </label>
               <div className="mt-1">
@@ -48,7 +48,7 @@ const Login = ({ handleLogin }) => {
                   autoComplete="username"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Username"
+                  placeholder="Enter your username"
                   value={formData.username}
                   onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                 />
@@ -56,7 +56,7 @@ const Login = ({ handleLogin }) => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Password
               </label>
               <div className="mt-1">
@@ -67,7 +67,7 @@ const Login = ({ handleLogin }) => {
                   autoComplete="current-password"
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Password"
+                  placeholder="Yout password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
