@@ -27,7 +27,7 @@ const BoarDetail = () => {
       console.log("No file selected.");
       return;
     }
-  
+
     try {
       const formData = new FormData();
       formData.append("excelFile", excelFile);
@@ -41,26 +41,23 @@ const BoarDetail = () => {
           },
         }
       );
-  
-      // Display alert for successful upload
-      alert("Excel data upload Successfully");
 
-  
+      //Display alart for successful upload
+      alert("Excel data upload Successfully")
+
       // Reload the page after successful upload
       window.location.reload();
-  
-      // Scroll to the top of the page
+
       window.scrollTo(0, 0);
-      
+    
       console.log("Upload successful:", response.data);
       // Optionally, you can fetch updated data after successful upload
     } catch (error) {
-      // Display alert for upload failure
-      alert("Error Uploading file. Please try again!!");
+      alert("Error Uploading file.Please try again!!")
       console.error("Error uploading file:", error);
     }
+    
   };
-  
 
   useEffect(() => {
     const fetchData = async () => {
