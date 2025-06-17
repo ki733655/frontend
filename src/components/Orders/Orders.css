@@ -12,11 +12,14 @@
 }
 
 .orders-main-2nd{
+    /* border: 1px solid black; */
+    overflow-x: scroll;
     background-color: white;
     padding: 2%;
     padding-top: 4px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); 
+    
 }
 
 .orders-detail-table thead tr th{
@@ -30,14 +33,18 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    
 }
 
 .orders-detail-row{
+    margin-right: 10vw;
     /* border: 1px solid black; */
     width: 62vw;
     display: flex;
-    justify-content: space-between;
+    gap: 2px;
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
 }
 
 .orders-detail-column{
@@ -51,6 +58,8 @@
     margin-left: 0vw;
     background-color: rgb(230, 237, 237);
 }
+
+
 
 .orders-detail-logo{
     display: flex;
