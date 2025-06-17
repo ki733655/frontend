@@ -1,7 +1,7 @@
-// App.js
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+
 import Sidebar from "./components/Sidebar/Sidebar";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Livestock from "./components/Livestock/Livestock";
@@ -43,35 +43,46 @@ function App() {
 
   return (
     <BrowserRouter>
-      {!authenticated ? (
-        <Login handleLogin={handleLogin} />
-      ) : (
-        <div className="main">
-          <div className="sidebar">
-            <Sidebar value={setName} />
-          </div>
-          <div className="mainbar">
-            <Nav handleLogout={handleLogout} />
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/livestock" element={<Livestock />} />
-              <Route path="/livestock/addboar" element={<Boar />} />
-              <Route path="/livestock/addsow" element={<Sow />} />
-              <Route path="/livestock/addpiglets" element={<Piglet />} />
-              <Route path="/livestock/addkhassi" element={<Khassi />} />
-              <Route path="/livestock/totalboar" element={<BoarDetail />} />
-              <Route path="/livestock/totalsow" element={<SowDetail />} />
-              <Route path="/livestock/totalpiglet" element={<PigletDetail />} />
-              <Route path="/livestock/totalkhassi" element={<KhassiDetail />} />
-              <Route path="order/" element={<Orders />} />
-              <Route path="order/addorder" element={<OrdersForm />} />
-              <Route path="/sales" element={<Sales />} />
-              <Route path="employee/" element={<Employee />} />
-              <Route path="employee/addemployee" element={<EmployeeForm />} />
-            </Routes>
-          </div>
-        </div>
-      )}
+      <Routes>
+        <Route
+          path="/login"
+          element={<Login onLogin={handleLogin} />}
+        />
+        <Route
+          path="/*"
+          element={
+            authenticated ? (
+              <div className="main">
+                <div className="sidebar">
+                  <Sidebar value={setName} />
+                </div>
+                <div className="mainbar">
+                  <Nav handleLogout={handleLogout} />
+                  <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/livestock" element={<Livestock />} />
+                    <Route path="/livestock/addboar" element={<Boar />} />
+                    <Route path="/livestock/addsow" element={<Sow />} />
+                    <Route path="/livestock/addpiglets" element={<Piglet />} />
+                    <Route path="/livestock/addkhassi" element={<Khassi />} />
+                    <Route path="/livestock/totalboar" element={<BoarDetail />} />
+                    <Route path="/livestock/totalsow" element={<SowDetail />} />
+                    <Route path="/livestock/totalpiglet" element={<PigletDetail />} />
+                    <Route path="/livestock/totalkhassi" element={<KhassiDetail />} />
+                    <Route path="/order" element={<Orders />} />
+                    <Route path="/order/addorder" element={<OrdersForm />} />
+                    <Route path="/sales" element={<Sales />} />
+                    <Route path="/employee" element={<Employee />} />
+                    <Route path="/employee/addemployee" element={<EmployeeForm />} />
+                  </Routes>
+                </div>
+              </div>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }

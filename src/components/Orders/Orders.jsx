@@ -174,7 +174,7 @@ const Orders = () => {
                 <option value="all">All</option>
               </select>
               <Form.Control
-                style={{ width: "10vw", marginLeft: "2vw" }}
+                style={{ width: "8vw", marginLeft: "2vw" }}
                 type="text"
                 placeholder="Search by id"
                 className=" mr-sm-2"
