@@ -14,10 +14,10 @@ const Livestockdemo = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const boar_response = await axios.get("http://localhost:3000/boar-count");
-        const sow_response = await axios.get("http://localhost:3000/sow-count");
-        const piglets_response = await axios.get("http://localhost:3000/piglets-count");
-        const khassi_response = await axios.get("http://localhost:3000/khassi-count");
+        const boar_response = await axios.get("https://farmbackend-wsn6.onrender.com/boar-count");
+        const sow_response = await axios.get("https://farmbackend-wsn6.onrender.com/sow-count");
+        const piglets_response = await axios.get("https://farmbackend-wsn6.onrender.com/piglets-count");
+        const khassi_response = await axios.get("https://farmbackend-wsn6.onrender.com/khassi-count");
 
         // updating the values of the pig counts
         setBoarCount(boar_response.data.count);

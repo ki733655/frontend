@@ -71,7 +71,7 @@ const Piglet = () => {
     try {
       // Make an HTTP POST request to your backend endpoint
       const response = await axios.post(
-        "http://localhost:3000/submit-form-piglet",
+        "https://farmbackend-wsn6.onrender.com/submit-form-piglet",
         formData
       );
 

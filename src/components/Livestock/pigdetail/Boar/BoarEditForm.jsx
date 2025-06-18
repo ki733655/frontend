@@ -31,7 +31,7 @@ const BoarEditForm = ({ editItem, setEditItem }) => {
   
     try {
       // Assuming your server endpoint is expecting the edited data as JSON in the request body
-      await axios.put("http://localhost:3000/boar-edit", formData);
+      await axios.put("https://farmbackend-wsn6.onrender.com/boar-edit", formData);
       alert("Data updated successfully");
       // Clear the form data after successful submission
       setFormData({

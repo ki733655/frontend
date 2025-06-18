@@ -21,13 +21,13 @@ const Sales = () => {
 
   const fetchData = async () => {
     try {
-      let url = "http://localhost:3000/sale-details";
+      let url = "https://farmbackend-wsn6.onrender.com/sale-details";
       if (searchQuery.orderId.trim() !== "") {
-        url = `http://localhost:3000/sale-search-id?search=${searchQuery.orderId}`;
+        url = `https://farmbackend-wsn6.onrender.com/sale-search-id?search=${searchQuery.orderId}`;
       } else if (searchQuery.customerName.trim() !== "") {
-        url = `http://localhost:3000/sale-search-customerName?search=${searchQuery.customerName}`;
+        url = `https://farmbackend-wsn6.onrender.com/sale-search-customerName?search=${searchQuery.customerName}`;
       } else if (searchQuery.phoneNumber.trim() !== "") {
-        url = `http://localhost:3000/sale-search-phoneNumber?search=${searchQuery.phoneNumber}`;
+        url = `https://farmbackend-wsn6.onrender.com/sale-search-phoneNumber?search=${searchQuery.phoneNumber}`;
       }
 
       const response = await axios.get(url);

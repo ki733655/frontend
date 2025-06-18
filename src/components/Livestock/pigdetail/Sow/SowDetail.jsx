@@ -24,7 +24,7 @@ const SowDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/sow-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/sow-details");
         setSowData(response.data);
       } catch (error) {
         console.log(error);
@@ -39,13 +39,13 @@ const SowDetail = () => {
     try {
       // Sending the deletion request
       const response = await axios.delete(
-        `http://localhost:3000/sow-delete/${id}`
+        `https://farmbackend-wsn6.onrender.com/sow-delete/${id}`
       );
       console.log("Deletion response:", response.data);
 
       // Fetching the updated data after deletion
       const responseAfterDelete = await axios.get(
-        "http://localhost:3000/sow-details"
+        "https://farmbackend-wsn6.onrender.com/sow-details"
       );
       console.log("Updated data after deletion:", responseAfterDelete.data);
 
@@ -75,12 +75,12 @@ const SowDetail = () => {
     try {
       if (data.trim() === "s-") {
         // If search query is empty, fetch all details
-        const response = await axios.get("http://localhost:3000/sow-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/sow-details");
         setSowData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/sow-search-id?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/sow-search-id?search=${data}`
         );
         setSowData(response.data);
       }
@@ -95,12 +95,12 @@ const SowDetail = () => {
     try {
       if (data.trim() === "") {
         // If search query is empty, fetch all details
-        const response = await axios.get("http://localhost:3000/sow-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/sow-details");
         setSowData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/sow-search-roomNumber?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/sow-search-roomNumber?search=${data}`
         );
         setSowData(response.data);
       }
@@ -115,12 +115,12 @@ const SowDetail = () => {
     try {
       if (data.trim() === "") {
         // If search query is empty, fetch all details
-        const response = await axios.get("http://localhost:3000/sow-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/sow-details");
         setSowData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/sow-search-weight?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/sow-search-weight?search=${data}`
         );
         setSowData(response.data);
       }

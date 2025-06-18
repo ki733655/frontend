@@ -22,7 +22,7 @@ const Employee = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/employee-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/employee-details");
         setEmployeeData(response.data);
       } catch (error) {
         console.log(error);
@@ -40,11 +40,11 @@ const Employee = () => {
 
     try {
       if (data.trim() === "") {
-        const response = await axios.get("http://localhost:3000/employee-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/employee-details");
         setEmployeeData(response.data);
       } else {
         const response = await axios.get(
-          `http://localhost:3000/employee-search-id?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/employee-search-id?search=${data}`
         );
         setEmployeeData(response.data);
       }
@@ -62,11 +62,11 @@ const Employee = () => {
 
     try {
       if (data.trim() === "") {
-        const response = await axios.get("http://localhost:3000/employee-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/employee-details");
         setEmployeeData(response.data);
       } else {
         const response = await axios.get(
-          `http://localhost:3000/employee-search-name?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/employee-search-name?search=${data}`
         );
         setEmployeeData(response.data);
       }
@@ -79,11 +79,11 @@ const Employee = () => {
     e.preventDefault();
     try {
       if (searchQuery.employeeId.trim() === "" && searchQuery.employeeName.trim() === "") {
-        const response = await axios.get("http://localhost:3000/employee-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/employee-details");
         setEmployeeData(response.data);
       } else {
         const response = await axios.get(
-          `http://localhost:3000/employee-search?employeeId=${searchQuery.employeeId}&employeeName=${searchQuery.employeeName}`
+          `https://farmbackend-wsn6.onrender.com/employee-search?employeeId=${searchQuery.employeeId}&employeeName=${searchQuery.employeeName}`
         );
         setEmployeeData(response.data);
       }
@@ -95,12 +95,12 @@ const Employee = () => {
   const handleDelete = async (employeeId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/employee-delete/${employeeId}`
+        `https://farmbackend-wsn6.onrender.com/employee-delete/${employeeId}`
       );
       console.log("Deletion response:", response.data);
 
       const responseAfterDelete = await axios.get(
-        "http://localhost:3000/employee-details"
+        "https://farmbackend-wsn6.onrender.com/employee-details"
       );
       setEmployeeData(
         Array.isArray(responseAfterDelete.data) ? responseAfterDelete.data : []
