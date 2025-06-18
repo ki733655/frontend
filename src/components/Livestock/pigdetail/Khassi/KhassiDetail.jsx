@@ -23,7 +23,7 @@ const KhassiDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/khassi-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/khassi-details");
         setKhassiData(response.data);
       } catch (error) {
         console.log(error);
@@ -38,13 +38,13 @@ const KhassiDetail = () => {
     try {
       // Sending the deletion request
       const response = await axios.delete(
-        `http://localhost:3000/khassi-delete/${id}`
+        `https://farmbackend-wsn6.onrender.com/khassi-delete/${id}`
       );
       console.log("Deletion response:", response.data);
 
       // Fetching the updated data after deletion
       const responseAfterDelete = await axios.get(
-        "http://localhost:3000/khassi-details"
+        "https://farmbackend-wsn6.onrender.com/khassi-details"
       );
       console.log("Updated data after deletion:", responseAfterDelete.data);
 
@@ -74,12 +74,12 @@ const KhassiDetail = () => {
     try {
       if (data.trim() === "k-") {
         // If search query is empty, fetch all details
-        const response = await axios.get("http://localhost:3000/khassi-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/khassi-details");
         setKhassiData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/khassi-search-id?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/khassi-search-id?search=${data}`
         );
         setKhassiData(response.data);
       }
@@ -95,12 +95,12 @@ const handleChangeRoomNumber = async (e) => {
   try {
     if (data.trim() === "") {
       // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/khassi-details");
+      const response = await axios.get("https://farmbackend-wsn6.onrender.com/khassi-details");
       setKhassiData(response.data);
     } else {
       // If search query is not empty, perform search
       const response = await axios.get(
-        `http://localhost:3000/khassi-search-roomNumber?search=${data}`
+        `https://farmbackend-wsn6.onrender.com/khassi-search-roomNumber?search=${data}`
       );
       setKhassiData(response.data);
     }
@@ -116,12 +116,12 @@ const handleChangeWeight = async (e) => {
   try {
     if (data.trim() === "") {
       // If search query is empty, fetch all details
-      const response = await axios.get("http://localhost:3000/khassi-details");
+      const response = await axios.get("https://farmbackend-wsn6.onrender.com/khassi-details");
       setKhassiData(response.data);
     } else {
       // If search query is not empty, perform search
       const response = await axios.get(
-        `http://localhost:3000/khassi-search-weight?search=${data}`
+        `https://farmbackend-wsn6.onrender.com/khassi-search-weight?search=${data}`
       );
       setKhassiData(response.data);
     }

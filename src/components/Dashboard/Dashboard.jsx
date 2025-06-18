@@ -35,14 +35,14 @@ const Dashboard = () => {
           khassidata,
           pigletdata,
         ] = await Promise.all([
-          axios.get("http://localhost:3000/sale-count"),
-          axios.get("http://localhost:3000/pig-count"),
-          axios.get("http://localhost:3000/order-count"),
-          axios.get("http://localhost:3000/employee-count"),
-          axios.get("http://localhost:3000/boar-count"),
-          axios.get("http://localhost:3000/sow-count"),
-          axios.get("http://localhost:3000/khassi-count"),
-          axios.get("http://localhost:3000/piglet-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/sale-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/pig-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/order-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/employee-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/boar-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/sow-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/khassi-count"),
+          axios.get("https://farmbackend-wsn6.onrender.com/piglet-count"),
         ]);
         setSaleCount(saleresponse.data);
         setPigCount(pigresponse.data.totalCount);
@@ -53,11 +53,11 @@ const Dashboard = () => {
         setKhassiCount(khassidata.data.count);
         setPigletCount(pigletdata.data.count);
 
-        const barData = await axios.get("http://localhost:3000/add-bar-data");
+        const barData = await axios.get("https://farmbackend-wsn6.onrender.com/add-bar-data");
 
         if (barData) {
           const barresponse = await axios.get(
-            "http://localhost:3000/sales-by-month"
+            "https://farmbackend-wsn6.onrender.com/sales-by-month"
           );
           setSalesData(barresponse.data);
         }

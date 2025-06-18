@@ -15,14 +15,14 @@ const Livestock = () => {
     const fetchData = async () => {
       try {
         const boar_response = await axios.get(
-          "http://localhost:3000/boar-count"
+          "https://farmbackend-wsn6.onrender.com/boar-count"
         );
-        const sow_response = await axios.get("http://localhost:3000/sow-count");
+        const sow_response = await axios.get("https://farmbackend-wsn6.onrender.com/sow-count");
         const piglets_response = await axios.get(
-          "http://localhost:3000/piglet-count"
+          "https://farmbackend-wsn6.onrender.com/piglet-count"
         );
         const khassi_response = await axios.get(
-          "http://localhost:3000/khassi-count"
+          "https://farmbackend-wsn6.onrender.com/khassi-count"
         );
 
         // updating the values of the pig counts

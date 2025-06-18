@@ -23,7 +23,7 @@ const PigletDetail = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/piglet-details"
+          "https://farmbackend-wsn6.onrender.com/piglet-details"
         );
         setPigletData(response.data);
       } catch (error) {
@@ -39,13 +39,13 @@ const PigletDetail = () => {
     try {
       // Sending the deletion request
       const response = await axios.delete(
-        `http://localhost:3000/piglet-delete/${id}`
+        `https://farmbackend-wsn6.onrender.com/piglet-delete/${id}`
       );
       console.log("Deletion response:", response.data);
 
       // Fetching the updated data after deletion
       const responseAfterDelete = await axios.get(
-        "http://localhost:3000/piglet-details"
+        "https://farmbackend-wsn6.onrender.com/piglet-details"
       );
       console.log("Updated data after deletion:", responseAfterDelete.data);
 
@@ -74,13 +74,13 @@ const PigletDetail = () => {
       if (data.trim() === "p-") {
         // If search query is empty, fetch all details
         const response = await axios.get(
-          "http://localhost:3000/piglet-details"
+          "https://farmbackend-wsn6.onrender.com/piglet-details"
         );
         setPigletData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/piglet-search-id?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/piglet-search-id?search=${data}`
         );
         setPigletData(response.data);
       }
@@ -96,13 +96,13 @@ const PigletDetail = () => {
       if (data.trim() === "") {
         // If search query is empty, fetch all details
         const response = await axios.get(
-          "http://localhost:3000/piglet-details"
+          "https://farmbackend-wsn6.onrender.com/piglet-details"
         );
         setPigletData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/piglet-search-roomNumber?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/piglet-search-roomNumber?search=${data}`
         );
         setPigletData(response.data);
       }
@@ -118,13 +118,13 @@ const PigletDetail = () => {
       if (data.trim() === "") {
         // If search query is empty, fetch all details
         const response = await axios.get(
-          "http://localhost:3000/piglet-details"
+          "https://farmbackend-wsn6.onrender.com/piglet-details"
         );
         setPigletData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/piglet-search-weight?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/piglet-search-weight?search=${data}`
         );
         setPigletData(response.data);
       }

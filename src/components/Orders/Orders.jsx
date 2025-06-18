@@ -28,7 +28,7 @@ const Orders = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/order-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/order-details");
         setOrderData(response.data);
       } catch (error) {
         console.log(error);
@@ -43,13 +43,13 @@ const Orders = () => {
     try {
       // Sending the deletion request
       const response = await axios.delete(
-        `http://localhost:3000/order-delete/${orderId}`
+        `https://farmbackend-wsn6.onrender.com/order-delete/${orderId}`
       );
       console.log("Deletion response:", response.data);
 
       // Fetching the updated data after deletion
       const responseAfterDelete = await axios.get(
-        "http://localhost:3000/order-details"
+        "https://farmbackend-wsn6.onrender.com/order-details"
       );
       console.log("Updated data after deletion:", responseAfterDelete.data);
 
@@ -80,12 +80,12 @@ const Orders = () => {
     try {
       if (data.trim() === "") {
         // If search query is empty, fetch all details
-        const response = await axios.get("http://localhost:3000/order-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/order-details");
         setOrderData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/order-search-id?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/order-search-id?search=${data}`
         );
         setOrderData(response.data);
       }
@@ -100,12 +100,12 @@ const Orders = () => {
     try {
       if (data.trim() === "") {
         // If search query is empty, fetch all details
-        const response = await axios.get("http://localhost:3000/order-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/order-details");
         setOrderData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/order-search-customerName?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/order-search-customerName?search=${data}`
         );
         setOrderData(response.data);
       }
@@ -120,12 +120,12 @@ const Orders = () => {
     try {
       if (data.trim() === "") {
         // If search query is empty, fetch all details
-        const response = await axios.get("http://localhost:3000/order-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/order-details");
         setOrderData(response.data);
       } else {
         // If search query is not empty, perform search
         const response = await axios.get(
-          `http://localhost:3000/order-search-phoneNumber?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/order-search-phoneNumber?search=${data}`
         );
         setOrderData(response.data);
       }
@@ -137,14 +137,14 @@ const Orders = () => {
   const handleChangeDeliveryStatus = async(e) => {
     const data = e.target.value;
     if(data == "all"){
-      const response = await axios.get("http://localhost:3000/order-details");
+      const response = await axios.get("https://farmbackend-wsn6.onrender.com/order-details");
       setOrderData(response.data);
     }
     console.log(data)
     setSearchQuery({deliveryStatus : data});
     try{
       const response = await axios.get(
-        `http://localhost:3000/order-search-deliveryStatus?search=${data}`
+        `https://farmbackend-wsn6.onrender.com/order-search-deliveryStatus?search=${data}`
       );
       setOrderData(response.data);
     }

@@ -34,16 +34,16 @@ const OrdersForm = () => {
     const fetchPigOptions = async () => {
       try {
         const responseBoar = await axios.get(
-          "http://localhost:3000/boar-details"
+          "https://farmbackend-wsn6.onrender.com/boar-details"
         );
         const responseSow = await axios.get(
-          "http://localhost:3000/sow-details"
+          "https://farmbackend-wsn6.onrender.com/sow-details"
         );
         const responseKhassi = await axios.get(
-          "http://localhost:3000/khassi-details"
+          "https://farmbackend-wsn6.onrender.com/khassi-details"
         );
         const responsePiglet = await axios.get(
-          "http://localhost:3000/piglet-details"
+          "https://farmbackend-wsn6.onrender.com/piglet-details"
         );
 
         const response = [
@@ -109,7 +109,7 @@ const OrdersForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/submit-form-order",
+        "https://farmbackend-wsn6.onrender.com/submit-form-order",
         formData
       );
 

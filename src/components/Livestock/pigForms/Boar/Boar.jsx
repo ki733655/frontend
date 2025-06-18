@@ -57,7 +57,7 @@ const Boar = () => {
     
     try {
       // Make an HTTP POST request to your backend endpoint
-      const response = await axios.post('http://localhost:3000/submit-form-boar', formData);
+      const response = await axios.post('https://farmbackend-wsn6.onrender.com/submit-form-boar', formData);
       
       // Handle the response if needed
       console.log(response.data);

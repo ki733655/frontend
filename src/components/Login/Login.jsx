@@ -15,7 +15,7 @@ const Login = ({ onLogin }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/check-login", formData);
+      const response = await axios.post("https://farmbackend-wsn6.onrender.com/check-login", formData);
       const { token } = response.data;
 
       localStorage.setItem('token', token);

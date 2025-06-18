@@ -33,7 +33,7 @@ const BoarDetail = () => {
       formData.append("excelFile", excelFile);
       
       const response = await axios.post(
-        "http://localhost:3000/boar-upload",
+        "https://farmbackend-wsn6.onrender.com/boar-upload",
         formData,
         {
           headers: {
@@ -65,7 +65,7 @@ const BoarDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/boar-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/boar-details");
         setBoarData(response.data);
       } catch (error) {
         console.log(error);
@@ -78,12 +78,12 @@ const BoarDetail = () => {
     console.log("Deleting document with ID:", id);
     try {
       const response = await axios.delete(
-        `http://localhost:3000/boar-delete/${id}`
+        `https://farmbackend-wsn6.onrender.com/boar-delete/${id}`
       );
       console.log("Deletion response:", response.data);
 
       const responseAfterDelete = await axios.get(
-        "http://localhost:3000/boar-details"
+        "https://farmbackend-wsn6.onrender.com/boar-details"
       );
       console.log("Updated data after deletion:", responseAfterDelete.data);
 
@@ -108,11 +108,11 @@ const BoarDetail = () => {
     setSearchQueryId(data);
     try {
       if (data.trim() === "b-") {
-        const response = await axios.get("http://localhost:3000/boar-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/boar-details");
         setBoarData(response.data);
       } else {
         const response = await axios.get(
-          `http://localhost:3000/boar-search-id?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/boar-search-id?search=${data}`
         );
         setBoarData(response.data);
       }
@@ -126,11 +126,11 @@ const BoarDetail = () => {
     setSearchQueryRoomNumber(data);
     try {
       if (data.trim() === "") {
-        const response = await axios.get("http://localhost:3000/boar-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/boar-details");
         setBoarData(response.data);
       } else {
         const response = await axios.get(
-          `http://localhost:3000/boar-search-roomNumber?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/boar-search-roomNumber?search=${data}`
         );
         setBoarData(response.data);
       }
@@ -144,11 +144,11 @@ const BoarDetail = () => {
     setSearchQueryWeight(data);
     try {
       if (data.trim() === "") {
-        const response = await axios.get("http://localhost:3000/boar-details");
+        const response = await axios.get("https://farmbackend-wsn6.onrender.com/boar-details");
         setBoarData(response.data);
       } else {
         const response = await axios.get(
-          `http://localhost:3000/boar-search-weight?search=${data}`
+          `https://farmbackend-wsn6.onrender.com/boar-search-weight?search=${data}`
         );
         setBoarData(response.data);
       }
